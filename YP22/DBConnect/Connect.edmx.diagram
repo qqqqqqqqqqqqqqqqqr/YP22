@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f1329d92031a4a4c9610df5272f8651c" Name="Diagram1">
+        <EntityTypeShape EntityType="YP22Model.AcceptanceStatus" Width="1.5" PointX="7.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="YP22Model.AdmissionProduct" Width="1.5" PointX="10" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="YP22Model.ExecutionStage" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="YP22Model.Order" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="YP22Model.OrderProduct" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="YP22Model.Product" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="YP22Model.Purchase" Width="1.5" PointX="12.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="YP22Model.Role" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="YP22Model.SupplierProduct" Width="1.5" PointX="10" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="YP22Model.SupplierСountry" Width="1.5" PointX="7.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="YP22Model.sysdiagrams" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YP22Model.Unit" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="YP22Model.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="YP22Model.FK_AdmissionProduct_AcceptanceStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="YP22Model.FK_AdmissionProduct_SupplierСountry1" ManuallyRouted="false" />
+        <AssociationConnector Association="YP22Model.FK_Purchase_AdmissionProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="YP22Model.FK_Order_ExecutionStage" ManuallyRouted="false" />
+        <AssociationConnector Association="YP22Model.FK_Order_User" ManuallyRouted="false" />
+        <AssociationConnector Association="YP22Model.FK_Order_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="YP22Model.FK_OrderProduct_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="YP22Model.FK_OrderProduct_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="YP22Model.FK_Product_Unit" ManuallyRouted="false" />
+        <AssociationConnector Association="YP22Model.FK_SupplierProduct_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="YP22Model.FK_Purchase_SupplierProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="YP22Model.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="YP22Model.FK_SupplierProduct_SupplierСountry" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

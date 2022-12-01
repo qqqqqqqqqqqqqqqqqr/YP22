@@ -1,0 +1,50 @@
+﻿<Window x:Class="YP22.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YP22"
+        mc:Ignorable="d"
+        Title="Окошечко" Height="650" Width="1000" WindowState="Maximized">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Border Grid.Row="1" Margin="10" Grid.Column="1" Grid.RowSpan="2"  BorderThickness="0.1" BorderBrush="Black">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="5" Color="Black"></DropShadowEffect>
+            </Border.Effect>
+        </Border>
+        <StackPanel  Grid.Row="1" Margin="10" Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Frame x:Name="MainFrame"></Frame>
+        </StackPanel>
+
+        <!--<StackPanel Margin="50" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" >
+
+            <StackPanel.Effect>
+                <DropShadowEffect BlurRadius="5" Color="Black" ></DropShadowEffect>
+            </StackPanel.Effect>
+        </StackPanel>-->
+       
+       
+   
+      
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="WhiteSmoke">
+                
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.RowSpan="2" Background="WhiteSmoke"></StackPanel>
+        <StackPanel Grid.Column="2" Grid.RowSpan="2" Background="WhiteSmoke"></StackPanel>
+        
+    </Grid>
+</Window>
