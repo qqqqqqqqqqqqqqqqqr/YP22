@@ -28,6 +28,10 @@ namespace YP22.MyWindow
             {
                 MyFrame.Navigate(new ClientPage()) ;
             }
+            else if (AuthUser.user.RoleId == 2)
+            {
+                MyFrame.Navigate(new AdminPage());
+            }
         }
     }
 }

@@ -1,0 +1,42 @@
+﻿<Page x:Class="YP22.MyPages.AdminPages.EditProductPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:YP22.MyPages.AdminPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EditProductPage">
+
+    <Grid>
+        <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Margin="10" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock> Наименование </TextBlock>
+                <TextBox Width="250"> </TextBox>
+            </StackPanel>
+
+            <StackPanel Margin="10" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock> Стоимость</TextBlock>
+                <TextBox Width="250"></TextBox>
+            </StackPanel>
+
+            <StackPanel Margin="10" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock> Описание</TextBlock>
+                <TextBox Width="250" Height="100"></TextBox>
+            </StackPanel>
+
+            <StackPanel Margin="10" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock> Единица измерения</TextBlock>
+                <ComboBox Width="250">
+                    
+                </ComboBox>
+               
+            </StackPanel>
+            <StackPanel Margin="10" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock> Количество шт. в наличии</TextBlock>
+                <TextBox Width="250"></TextBox>
+            </StackPanel>
+            <Button x:Name="BtnSave" Click="BtnSave_Click"  Width="200" HorizontalAlignment="Center" Margin="10">Сохранить</Button>
+        </StackPanel>
+    </Grid>
+</Page>

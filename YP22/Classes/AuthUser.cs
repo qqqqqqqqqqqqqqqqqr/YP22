@@ -10,6 +10,6 @@ namespace YP22.Classes
     public class AuthUser
     {
         public static User user = new User();
-        public static List<Product> ListOrderBuy = new List<Product>();
+        public static List<OrderProduct> ListOrderBuy = new List<OrderProduct>();
     }
 }

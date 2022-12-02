@@ -29,7 +29,7 @@ namespace YP22.MyPages.ClientPages
           
         }
 
-      public static List<Product> ListOrderBuy = new List<Product>();
+      public static List<OrderProduct> ListOrderBuy = new List<OrderProduct>();
 
       public static  Order order = new Order();
     
@@ -38,10 +38,7 @@ namespace YP22.MyPages.ClientPages
         {
             var selProduct = (sender as Button).DataContext as Product;
           
-            ListOrderBuy.Add(selProduct);
-            ListOrderBuy =  ListOrderBuy.Distinct().ToList();
-            AuthUser.ListOrderBuy = ListOrderBuy;
-
+          
             
             order.Customer = AuthUser.user.id;
             DBConnect.ConnectClass.db.Order.Add(order);
@@ -49,11 +46,19 @@ namespace YP22.MyPages.ClientPages
 
 
 
-           // OrderProduct orderProduct = new OrderProduct();
-           // orderProduct.OrderId = DBConnect.ConnectClass.db.Order.Where(x => x.ExecutionStageId == null).FirstOrDefault().id;
-           // orderProduct.ProductId = selProduct.id;
+            OrderProduct orderProduct = new OrderProduct();
+            orderProduct.OrderId = DBConnect.ConnectClass.db.Order.Where(x => x.ExecutionStageId == null && x.Customer == AuthUser.user.id).FirstOrDefault().id;
+            orderProduct.ProductId = selProduct.id;
+            orderProduct.Count = 1;
 
-           //создаем в ьд ордер и на него все остальное. В коризне выводим уже заполненный ордерПродукт
+            ListOrderBuy.Add(orderProduct);
+            ListOrderBuy =  ListOrderBuy.Distinct().ToList();
+            AuthUser.ListOrderBuy = ListOrderBuy;
+
+
+           //создаем в ьд ордер и на него все остальное. В коризне выводим уже заполненный ордерПродукт . Если корзина очищается
+           //без оформления заказа, то просто удалить все данные на этот ордер
+           //Отличить этот ордер можно по null статусу 
             
 
            // OrderProduct orderProductInDb = new OrderProduct();

@@ -137,6 +137,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MyPages\AdminPages\AdminProductPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MyPages\AdminPages\EditProductPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MyPages\AuthPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -177,6 +185,12 @@
   <ItemGroup>
     <Compile Include="MyPages\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MyPages\AdminPages\AdminProductPage.xaml.cs">
+      <DependentUpon>AdminProductPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MyPages\AdminPages\EditProductPage.xaml.cs">
+      <DependentUpon>EditProductPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MyPages\AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
@@ -230,6 +244,21 @@
       <DependentUpon>Connect.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\YP22.DBConnect.AcceptanceStatus.datasource" />
+    <None Include="Properties\DataSources\YP22.DBConnect.AdmissionProduct.datasource" />
+    <None Include="Properties\DataSources\YP22.DBConnect.ConnectClass.datasource" />
+    <None Include="Properties\DataSources\YP22.DBConnect.ExecutionStage.datasource" />
+    <None Include="Properties\DataSources\YP22.DBConnect.Order.datasource" />
+    <None Include="Properties\DataSources\YP22.DBConnect.OrderProduct.datasource" />
+    <None Include="Properties\DataSources\YP22.DBConnect.Product.datasource" />
+    <None Include="Properties\DataSources\YP22.DBConnect.Purchase.datasource" />
+    <None Include="Properties\DataSources\YP22.DBConnect.Role.datasource" />
+    <None Include="Properties\DataSources\YP22.DBConnect.SupplierProduct.datasource" />
+    <None Include="Properties\DataSources\YP22.DBConnect.SupplierСountry.datasource" />
+    <None Include="Properties\DataSources\YP22.DBConnect.sysdiagrams.datasource" />
+    <None Include="Properties\DataSources\YP22.DBConnect.Unit.datasource" />
+    <None Include="Properties\DataSources\YP22.DBConnect.User.datasource" />
+    <None Include="Properties\DataSources\YP22.DBConnect.YP22Entities1.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -242,7 +271,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="MyPages\AdminPages\" />
     <Folder Include="MyPages\ManagerPages\" />
     <Folder Include="MyPages\StorekeeperPages\" />
     <Folder Include="Resourse\" />
