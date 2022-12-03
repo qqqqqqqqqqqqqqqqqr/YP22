@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using YP22.DBConnect;
 
 namespace YP22.MyPages
 {
@@ -24,6 +25,8 @@ namespace YP22.MyPages
         public bool userBoll = false;
         public bool ordersBool = false;
         public bool countryBool = false;
+
+   
         public AdminPage()
         {
             InitializeComponent();
@@ -32,6 +35,9 @@ namespace YP22.MyPages
             userBoll = false;
             ordersBool = false;
             countryBool = false;
+
+          
+
 
         }
 
@@ -60,7 +66,7 @@ namespace YP22.MyPages
         {
             if (productBoll == true)
             {
-                NavigationService.Navigate(new YP22.MyPages.AdminPages.EditProductPage());
+                NavigationService.Navigate(new YP22.MyPages.AdminPages.EditProductPage(new Product()));
             }
             else if (ordersBool == true)
             {

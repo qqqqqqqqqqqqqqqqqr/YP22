@@ -11,30 +11,34 @@
     <Grid>
         <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Margin="10" Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock> Наименование </TextBlock>
-                <TextBox Width="250"> </TextBox>
+                <TextBlock > Наименование </TextBlock>
+                <TextBox TextChanged="TbName_TextChanged" x:Name="TbName" Text="{Binding Name}" Width="250"> </TextBox>
             </StackPanel>
 
             <StackPanel Margin="10" Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock> Стоимость</TextBlock>
-                <TextBox Width="250"></TextBox>
+                <TextBox   TextChanged="TbPrice_TextChanged"    x:Name="TbPrice"  Text="{Binding Price}" Width="250"></TextBox>
             </StackPanel>
 
             <StackPanel Margin="10" Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock> Описание</TextBlock>
-                <TextBox Width="250" Height="100"></TextBox>
+                <TextBox TextChanged="TbDescription_TextChanged" Text="{Binding Description}" x:Name="TbDescription" Width="250" Height="100"></TextBox>
             </StackPanel>
 
             <StackPanel Margin="10" Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock> Единица измерения</TextBlock>
-                <ComboBox Width="250">
-                    
+                <ComboBox SelectedIndex="0" x:Name="CbUnit" Width="250">
+                    <ComboBoxItem>Без единицы измерения</ComboBoxItem>
+                    <ComboBoxItem>Килограмм</ComboBoxItem>
+                    <ComboBoxItem>Метр</ComboBoxItem>
+                    <ComboBoxItem>Литр</ComboBoxItem>
+                   
                 </ComboBox>
                
             </StackPanel>
             <StackPanel Margin="10" Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock> Количество шт. в наличии</TextBlock>
-                <TextBox Width="250"></TextBox>
+                <TextBlock> Количество в наличии</TextBlock>
+                <TextBox TextChanged="TbCount_TextChanged" Text="{Binding Count}" x:Name="TbCount" Width="250"></TextBox>
             </StackPanel>
             <Button x:Name="BtnSave" Click="BtnSave_Click"  Width="200" HorizontalAlignment="Center" Margin="10">Сохранить</Button>
         </StackPanel>

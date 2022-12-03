@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using YP22.DBConnect;
 
 namespace YP22.MyPages.AdminPages
 {
@@ -20,14 +21,110 @@ namespace YP22.MyPages.AdminPages
     /// </summary>
     public partial class EditProductPage : Page
     {
-        public EditProductPage()
+        Product Product;
+        public EditProductPage(Product product)
         {
             InitializeComponent();
+            
+            Update();
+            Product = product;
+            DataContext = Product;
+            
+
+           
+        }
+
+        private void Update()
+        {
+            if (TbName.Text.Length < 1 || TbPrice.Text.Length < 1 || TbDescription.Text.Length < 1 || TbCount.Text.Length < 1)
+            {
+                ToolTip toolTip = new ToolTip();
+                StackPanel toolTipPanel = new StackPanel();
+                //toolTipPanel.Children.Add(new TextBlock { Text = "Уведомление", FontSize = 16 });
+                toolTipPanel.Children.Add(new TextBlock { Text = "Необходимо заполнить поле!" });
+                toolTip.Content = toolTipPanel;
+
+            if (TbName.Text.Length < 1)
+                {
+                    TbName.ToolTip = toolTip;
+                }
+            
+            if (TbPrice.Text.Length < 1)
+                {
+                    TbPrice.ToolTip = toolTip;
+                }
+             if (TbDescription.Text.Length < 1)
+                {
+                    TbDescription.ToolTip = toolTip;
+                }
+             if(TbCount.Text.Length < 1)
+                {
+                    TbCount.ToolTip = toolTip;
+                }
+
+                BtnSave.IsEnabled = false;
+            }
+            else
+            {
+
+                BtnSave.IsEnabled = true;
+            }
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-
+           
+          
+           if (Product.id == 0)
+            {
+                Product.Date = DateTime.Now;
+                if (CbUnit.SelectedIndex == 0)
+                {
+                    Product.UnitID = 4;
+                }
+                else if(CbUnit.SelectedIndex == 1)
+                {
+                    Product.UnitID = 1;
+                }else if(CbUnit.SelectedIndex == 2)
+                {
+                    Product.UnitID = 2;
+                }else if(CbUnit.SelectedIndex == 3)
+                {
+                    Product.UnitID = 3;
+                }
+                DBConnect.ConnectClass.db.Product.Add(Product);
+            }
+            DBConnect.ConnectClass.db.SaveChanges();
+            MessageBox.Show("Выполнено!");
+           
         }
+
+        private void TbName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Update();
+           
+        }
+
+        private void TbPrice_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Update();
+  
+         
+        }
+
+        private void TbDescription_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Update();
+        }
+
+        private void TbCount_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Update();
+        
+        }
+
+  
+
+
     }
 }

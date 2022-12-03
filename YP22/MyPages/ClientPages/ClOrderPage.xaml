@@ -35,7 +35,7 @@
                                     </Border>
                                 </StackPanel>
                                 <StackPanel Grid.Row="0" Grid.Column="1">
-                                    <TextBlock Text="{Binding Name}"></TextBlock>
+                                    <TextBlock DataContext="{Binding ProductBusket.Product}" Text="{Binding Name}"></TextBlock>
                                 </StackPanel>
                                 <StackPanel Width="500" Grid.Row="1" Grid.Column="1">
                                     <TextBlock  Text="{Binding Description}"></TextBlock>

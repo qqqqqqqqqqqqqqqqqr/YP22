@@ -51,7 +51,7 @@ namespace YP22.MyPages.AdminPages
             if (MessageBox.Show("Вы хотите отредактировать данный продукт?", "Уведомление", MessageBoxButton.YesNo) ==
               MessageBoxResult.Yes)
             {
-               
+                NavigationService.Navigate(new MyPages.AdminPages.EditProductPage(selProduct));
             }
             else
                 MessageBox.Show("Вы отменили редактирование");

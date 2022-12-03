@@ -25,36 +25,24 @@ namespace YP22.MyPages.ClientPages
         public ClProductPage()
         {
             InitializeComponent();
-            ListProduct.ItemsSource = DBConnect.ConnectClass.db.Product.ToList();
-          
+            ListProduct.ItemsSource = DBConnect.ConnectClass.db.Product.Where(x => x.IsDelete != true).ToList();
+
         }
 
-      public static List<OrderProduct> ListOrderBuy = new List<OrderProduct>();
-
-      public static  Order order = new Order();
-    
-
+        public  List<ProductBusket> ListBusket = new List<ProductBusket>();
         private void BtnOrderAdd_Click(object sender, RoutedEventArgs e)
         {
             var selProduct = (sender as Button).DataContext as Product;
-          
-          
+
+            ProductBusket productBusket = new ProductBusket();
+            productBusket.Product = selProduct;
+            productBusket.Count = 1;
+            productBusket.MaxCount = (int)productBusket.Product.Count;
+
+            ListBusket.Add(productBusket);
+            ListBusket = ListBusket.Distinct().ToList();
+            AuthUser.ListBusket = ListBusket;
             
-            order.Customer = AuthUser.user.id;
-            DBConnect.ConnectClass.db.Order.Add(order);
-            DBConnect.ConnectClass.db.SaveChanges();
-
-
-
-            OrderProduct orderProduct = new OrderProduct();
-            orderProduct.OrderId = DBConnect.ConnectClass.db.Order.Where(x => x.ExecutionStageId == null && x.Customer == AuthUser.user.id).FirstOrDefault().id;
-            orderProduct.ProductId = selProduct.id;
-            orderProduct.Count = 1;
-
-            ListOrderBuy.Add(orderProduct);
-            ListOrderBuy =  ListOrderBuy.Distinct().ToList();
-            AuthUser.ListOrderBuy = ListOrderBuy;
-
 
            //создаем в ьд ордер и на него все остальное. В коризне выводим уже заполненный ордерПродукт . Если корзина очищается
            //без оформления заказа, то просто удалить все данные на этот ордер

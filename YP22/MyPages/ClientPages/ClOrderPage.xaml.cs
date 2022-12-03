@@ -26,30 +26,16 @@ namespace YP22.MyPages.ClientPages
     /// </summary>
     public partial class ClOrderPage : Page
     {
-        public static List<Product> products = new List<Product>();
 
+
+        public List<ProductBusket> productBuskets = new List<ProductBusket>();
         public ClOrderPage()
         {
             InitializeComponent();
-            for (int i =0;i < AuthUser.ListOrderBuy.Count; i++)
-            {
-                DBConnect.ConnectClass.db.OrderProduct.Add(AuthUser.ListOrderBuy[i]);
-               
-            }
-            DBConnect.ConnectClass.db.SaveChanges();
-
-            var sql =( from O in DBConnect.ConnectClass.db.Order
-                      where (O.Customer == AuthUser.user.id) && (O.ExecutionStageId == null) /*Находим заказ без статуса*/
-                      select O).FirstOrDefault();
-
-            var sql2 = (from Or in ConnectClass.db.OrderProduct /*Отбираем все пррдукты по заказу и соединяем для получения названия*/
-                       where (Or.Order == sql)
-                       join Pr in ConnectClass.db.Product on Or.ProductId equals Pr.id
-                       select Or);
-            //sql2 = (IQueryable<OrderProduct>)sql2.ToList();
-         
-  
-            ListProduct.ItemsSource = sql2;
+            productBuskets = AuthUser.ListBusket;
+            productBuskets = productBuskets.Distinct().ToList();
+            
+            ListProduct.ItemsSource = productBuskets;
         }
       
 
