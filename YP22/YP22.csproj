@@ -137,6 +137,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MyPages\AdminPages\AdminCountryEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MyPages\AdminPages\AdminCountryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MyPages\AdminPages\AdminProductPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -185,6 +193,12 @@
   <ItemGroup>
     <Compile Include="MyPages\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MyPages\AdminPages\AdminCountryEditPage.xaml.cs">
+      <DependentUpon>AdminCountryEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MyPages\AdminPages\AdminCountryPage.xaml.cs">
+      <DependentUpon>AdminCountryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MyPages\AdminPages\AdminProductPage.xaml.cs">
       <DependentUpon>AdminProductPage.xaml</DependentUpon>
@@ -273,7 +287,6 @@
   <ItemGroup>
     <Folder Include="MyPages\ManagerPages\" />
     <Folder Include="MyPages\StorekeeperPages\" />
-    <Folder Include="Resourse\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DBConnect\Connect.Context.tt">
@@ -286,6 +299,7 @@
       <DependentUpon>Connect.edmx</DependentUpon>
       <LastGenOutput>Connect.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resourse\галка.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

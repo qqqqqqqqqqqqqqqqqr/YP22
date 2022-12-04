@@ -27,24 +27,50 @@ namespace YP22.MyPages.ClientPages
     public partial class ClOrderPage : Page
     {
 
-
-        public List<ProductBusket> productBuskets = new List<ProductBusket>();
         public ClOrderPage()
         {
             InitializeComponent();
-            productBuskets = AuthUser.ListBusket;
-            productBuskets = productBuskets.Distinct().ToList();
-            
-            ListProduct.ItemsSource = productBuskets;
+            Order orderindb = DBConnect.ConnectClass.db.Order.Where(x => x.Customer == AuthUser.user.id && x.ExecutionStageId == null).FirstOrDefault();
+            if (orderindb != null)
+            {
+                AuthUser.order = orderindb;
+                List<OrderProduct> IS = DBConnect.ConnectClass.db.OrderProduct.Where(x => x.OrderId == AuthUser.order.id).ToList();
+                IS = IS.Distinct().ToList();
+                if (IS != null)
+                    ListProduct.ItemsSource = IS;
+            }
+  
         }
-      
 
-        private void TbCount_TextChanged(object sender, TextChangedEventArgs e)
+        private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
-            var selProduct = (sender as TextBox).DataContext as Product;
-          
-            
-          
+
+            if (MessageBox.Show("Вы точно хотите удалить все товары из корзины?", "Уведомление", MessageBoxButton.YesNo) ==
+              MessageBoxResult.Yes)
+            {
+                do
+                {
+                    OrderProduct OPDelete = DBConnect.ConnectClass.db.OrderProduct.Where(x => x.OrderId == AuthUser.order.id).FirstOrDefault();
+                    if (OPDelete != null)
+                        DBConnect.ConnectClass.db.OrderProduct.Remove(OPDelete);
+                    DBConnect.ConnectClass.db.SaveChanges();
+                }
+                while ((DBConnect.ConnectClass.db.OrderProduct.Where(x => x.OrderId == AuthUser.order.id).FirstOrDefault()) != null);
+            }
+            else
+                MessageBox.Show("Вы отменили удаление продукта");
+
+            Order orderindb = DBConnect.ConnectClass.db.Order.Where(x => x.Customer == AuthUser.user.id && x.ExecutionStageId == null).FirstOrDefault();
+            if (orderindb != null)
+            {
+                AuthUser.order = orderindb;
+                List<OrderProduct> IS = DBConnect.ConnectClass.db.OrderProduct.Where(x => x.OrderId == AuthUser.order.id).ToList();
+                IS = IS.Distinct().ToList();
+                if (IS != null)
+                    ListProduct.ItemsSource = IS;
+            }
+         
+             
         }
     }
 }

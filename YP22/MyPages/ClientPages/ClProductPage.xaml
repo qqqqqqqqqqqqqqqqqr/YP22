@@ -53,6 +53,7 @@
                         
                         <StackPanel Grid.Column="2" Grid.RowSpan="3" VerticalAlignment="Center">
                             <Button x:Name="BtnOrderAdd" Click="BtnOrderAdd_Click">Добавить в корзину</Button>
+                            <Button x:Name="BtnReadSupplier" Click="BtnReadSupplier_Click" Margin="0 10 0 0" >Поставщики товара</Button>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>

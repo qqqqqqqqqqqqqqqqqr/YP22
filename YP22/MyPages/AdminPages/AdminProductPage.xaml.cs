@@ -38,6 +38,8 @@ namespace YP22.MyPages.AdminPages
                 selProduct.IsDelete = true;
                 MessageBox.Show("Вы удалили данный продукт");
                 DBConnect.ConnectClass.db.SaveChanges();
+                ListProduct.ItemsSource = DBConnect.ConnectClass.db.Product.Where(x => x.IsDelete != true).ToList();
+
             }
             else
                 MessageBox.Show("Вы отменили удаление продукта");
@@ -52,10 +54,13 @@ namespace YP22.MyPages.AdminPages
               MessageBoxResult.Yes)
             {
                 NavigationService.Navigate(new MyPages.AdminPages.EditProductPage(selProduct));
+             
             }
             else
                 MessageBox.Show("Вы отменили редактирование");
 
         }
+
+       
     }
 }

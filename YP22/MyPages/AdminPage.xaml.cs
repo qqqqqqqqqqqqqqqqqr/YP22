@@ -26,6 +26,8 @@ namespace YP22.MyPages
         public bool ordersBool = false;
         public bool countryBool = false;
 
+        
+
    
         public AdminPage()
         {
@@ -36,7 +38,7 @@ namespace YP22.MyPages
             ordersBool = false;
             countryBool = false;
 
-          
+            Add.Visibility = YP22.Classes.AuthUser.Visibility;
 
 
         }
@@ -44,21 +46,37 @@ namespace YP22.MyPages
         private void BtnProduct_Click(object sender, RoutedEventArgs e)
         {
             productBoll = true;
-            NavigationService.Navigate(new YP22.MyPages.AdminPages.AdminProductPage());
+            userBoll = false;
+            ordersBool = false;
+            countryBool = false;
+            MyFrame.Navigate(new YP22.MyPages.AdminPages.AdminProductPage());
+            
         }
 
         private void BtnOrders_Click(object sender, RoutedEventArgs e)
         {
+            productBoll = false;
+            userBoll = false;
+            countryBool = false;
             ordersBool = true;
         }
 
         private void BtnCountry_Click(object sender, RoutedEventArgs e)
         {
+            productBoll = false;
+            userBoll = false;
+            ordersBool = false;
+        
             countryBool = true;
+            MyFrame.Navigate(new MyPages.AdminPages.AdminCountryPage());
         }
 
         private void BtnUser_Click(object sender, RoutedEventArgs e)
         {
+            productBoll = false;
+
+            ordersBool = false;
+            countryBool = false;
             userBoll = true;
         }
 
@@ -66,19 +84,21 @@ namespace YP22.MyPages
         {
             if (productBoll == true)
             {
-                NavigationService.Navigate(new YP22.MyPages.AdminPages.EditProductPage(new Product()));
+                productBoll = false;
+                MyFrame.Navigate(new MyPages.AdminPages.EditProductPage(new Product()));
             }
             else if (ordersBool == true)
             {
-
+                ordersBool = false;
             }
             else if (countryBool == true)
             {
-
+                countryBool = false;
+                MyFrame.Navigate(new MyPages.AdminPages.AdminCountryEditPage(new SupplierСountry()));
             }
             else if (userBoll == true)
             {
-
+                userBoll = false;
             }
         }
     }

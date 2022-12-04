@@ -41,6 +41,7 @@
                 <TextBox TextChanged="TbCount_TextChanged" Text="{Binding Count}" x:Name="TbCount" Width="250"></TextBox>
             </StackPanel>
             <Button x:Name="BtnSave" Click="BtnSave_Click"  Width="200" HorizontalAlignment="Center" Margin="10">Сохранить</Button>
+            <Button x:Name="Btn" Click="Btn_Click"  Width="200" HorizontalAlignment="Center" Margin="10">Отменить</Button>
         </StackPanel>
     </Grid>
 </Page>

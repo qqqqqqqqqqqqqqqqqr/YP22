@@ -13,11 +13,11 @@
             <TextBlock HorizontalAlignment="Center">Регистрация</TextBlock>
 
             <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock> Имя </TextBlock>
+                <TextBlock> Имя * </TextBlock>
                 <TextBox x:Name="TbName" Width="200"></TextBox>
             </StackPanel>
             <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock> Фамилия</TextBlock>
+                <TextBlock> Фамилия *</TextBlock>
                 <TextBox x:Name="TbFirstname" Width="200"></TextBox>
             </StackPanel>
             <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
@@ -26,18 +26,21 @@
             </StackPanel>
 
             <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock> Логин</TextBlock>
-                <TextBox x:Name="TbLogin" Width="200"></TextBox>
+                <TextBlock> Логин *</TextBlock>
+                <TextBox TextChanged="TbLogin_TextChanged" x:Name="TbLogin"  Width="200"></TextBox>
+                <Image x:Name="Im1" Source="C:\Users\MSSI\source\repos\YP22\YP22\Resourse\галка.png" Margin="-30 0 0 0" Visibility="Hidden" Width="15"></Image>
             </StackPanel>
 
             <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock> Пароль</TextBlock>
-                <TextBox x:Name="TbPassword" Width="200"></TextBox>
+                <TextBlock> Пароль *</TextBlock>
+                <TextBox x:Name="TbPassword" Width="200" TextChanged="TbPassword_TextChanged"></TextBox>
+                <Image x:Name="Im2" Source="C:\Users\MSSI\source\repos\YP22\YP22\Resourse\галка.png" Visibility="Hidden" Margin="-30 0 0 0" Width="15"></Image>
             </StackPanel>
 
 
-            <Button x:Name="BtnReg" Click="BtnReg_Click" Width="150" Margin="5">Зарегистрироваться</Button>
+            <Button x:Name="BtnReg" Click="BtnReg_Click"  Width="150" Margin="5">Зарегистрироваться</Button>
             <Button x:Name="BtnAuth" Click="BtnAuth_Click"   Width="150" Margin="5">Авторизация</Button>
+            <TextBlock Margin="40"> * - обязательны к заполнению</TextBlock>
 
 
         </StackPanel>

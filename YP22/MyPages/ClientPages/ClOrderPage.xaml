@@ -8,14 +8,14 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ClOrderPage">
 
-    <Grid>
+    <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="413*"/>
             <RowDefinition Height="37*"/>
         </Grid.RowDefinitions>
         <StackPanel>
             <StackPanel Grid.Row="0">
-                <ListView x:Name="ListProduct" d:ItemsSource="{d:SampleData}" Grid.RowSpan="2">
+                <ListView x:Name="ListProduct" d:ItemsSource="{d:SampleData}" Grid.RowSpan="2" Height="370">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid>
@@ -35,31 +35,36 @@
                                     </Border>
                                 </StackPanel>
                                 <StackPanel Grid.Row="0" Grid.Column="1">
-                                    <TextBlock DataContext="{Binding ProductBusket.Product}" Text="{Binding Name}"></TextBlock>
+                                    <TextBlock DataContext="{Binding Product}" Text="{Binding Name}"></TextBlock>
                                 </StackPanel>
                                 <StackPanel Width="500" Grid.Row="1" Grid.Column="1">
-                                    <TextBlock  Text="{Binding Description}"></TextBlock>
+                                    <TextBlock DataContext="{Binding Product}"   Text="{Binding Description}"></TextBlock>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock>Стоимость:</TextBlock>
                                         <TextBlock Text="{Binding Price}"></TextBlock>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock>В наличии:</TextBlock>
-                                        <TextBlock Text="{Binding Count}"></TextBlock>
+                                        <TextBlock DataContext="{Binding Product}"  Text="{Binding Count}"></TextBlock>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock>Ед. изм.:</TextBlock>
-                                        <TextBlock Text="{Binding Unit.Name}"></TextBlock>
+                                        <TextBlock DataContext="{Binding Product}"  Text="{Binding Unit.Name}"></TextBlock>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock>Дата добавления товара:</TextBlock>
-                                        <TextBlock Text="{Binding Date , StringFormat= dd.MM.yy }"></TextBlock>
+                                        <TextBlock DataContext="{Binding Product}"  Text="{Binding Date , StringFormat= dd.MM.yy }"></TextBlock>
                                     </StackPanel>
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="2" Grid.RowSpan="3" VerticalAlignment="Center" Orientation="Horizontal">
                                     <TextBlock Margin="5">Количество:</TextBlock>
-                                    <TextBox x:Name="TbCount" TextChanged="TbCount_TextChanged" Width="20">1</TextBox>
+                                    <TextBlock x:Name="TbCount"  Text="{Binding Count}"  Width="20">
+                                    </TextBlock>
+                                    <StackPanel>
+                                      
+                                       
+                                    </StackPanel>
                                 </StackPanel>
                             </Grid>
                         </DataTemplate>
@@ -68,7 +73,7 @@
             </StackPanel>
             <StackPanel Grid.Row="2">
                 <StackPanel Orientation="Horizontal">
-                    <Button Margin="5"> Очистить корзину </Button>
+                    <Button Margin="5" x:Name="BtnClear" Click="BtnClear_Click"> Очистить корзину </Button>
                     <Button Margin="5"> Оформить заказ </Button>
                     <TextBlock Margin="5"> Количество товаров:</TextBlock>
                     <TextBlock Margin="5"></TextBlock>

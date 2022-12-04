@@ -96,6 +96,7 @@ namespace YP22.MyPages.AdminPages
             }
             DBConnect.ConnectClass.db.SaveChanges();
             MessageBox.Show("Выполнено!");
+            NavigationService.Navigate(new MyPages.AdminPages.AdminProductPage());
            
         }
 
@@ -123,8 +124,17 @@ namespace YP22.MyPages.AdminPages
         
         }
 
-  
+        private void Btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Вы точно хотите отменить и вернуться назад?", "Уведомление", MessageBoxButton.YesNo) ==
+             MessageBoxResult.Yes)
+            {
+                NavigationService.Navigate(new MyPages.AdminPages.AdminProductPage());
 
+            }
+           
 
+            
+        }
     }
 }

@@ -24,15 +24,17 @@ namespace YP22.MyPages
         public RegistrationPage()
         {
             InitializeComponent();
+            BtnReg.IsEnabled = false;
         }
 
         private void BtnReg_Click(object sender, RoutedEventArgs e)
         {
             if (TbLogin.Text.Length > 0 && TbPassword.Text.Trim().Length > 0 &&
-                TbFirstname.Text.Length > 0 && TbLastname.Text.Length >0 
+                TbFirstname.Text.Length > 0  
                 && TbName.Text.Length > 0
                 )
             {
+
                 User newUser = new User();
                 newUser.Firstname = TbFirstname.Text;
                 newUser.LastName = TbLastname.Text;
@@ -46,11 +48,107 @@ namespace YP22.MyPages
                 NavigationService.Navigate(new YP22.MyPages.AuthPage());
 
             }
+            else
+            {
+                MessageBox.Show("Не пытайся обмануть. Нужно заполнить все обязательные поля (*)");
+            }
         }
 
         private void BtnAuth_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new YP22.MyPages.AuthPage());
+        }
+        bool save1 = false; /*отвечает за условия пароля*/
+        bool save2 = false; /*отвечает за условия логина*/
+
+        private void TbPassword_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            save1 = false;
+            String password = TbPassword.Text;
+            bool b1 = false;
+            bool b2 = false;
+            bool b3 = false;
+
+            ToolTip toolTip = new ToolTip();
+            StackPanel toolTipPanel = new StackPanel();
+            //toolTipPanel.Children.Add(new TextBlock { Text = "Уведомление", FontSize = 16 });
+            toolTipPanel.Children.Add(new TextBlock { Text = "Ваш пароль должен соответсвовать всем требованиям:" });
+            toolTipPanel.Children.Add(new TextBlock { Text = "1. Минимум 6 символов." });
+            toolTipPanel.Children.Add(new TextBlock { Text = "2. Минимум 1 прописная буква." });
+            toolTipPanel.Children.Add(new TextBlock { Text = "3. Минимум 1 цифра." });
+            toolTipPanel.Children.Add(new TextBlock { Text = "4. Минимум один символ из набора: ! @ # $ % ^. ." });
+            toolTip.Content = toolTipPanel;
+
+            if (password.Length > 6)
+            {
+                foreach(char a in password)
+                {
+                    if(a.ToString() == a.ToString().ToUpper())
+                    {
+                        b1 = true;
+                    }
+
+                   if (a.ToString() == "0" || a.ToString() == "1" || a.ToString() == "2" || a.ToString() == "3" || a.ToString() == "4" || a.ToString() == "5" ||
+                        a.ToString() == "6" || a.ToString() == "7" || a.ToString() == "8" || a.ToString() == "9")
+                    {
+                        b2 = true;
+                    }
+                   if (a.ToString() == "!" || a.ToString() == "@" || a.ToString() == "#" || a.ToString() == "$" || a.ToString() == "%" || a.ToString() == "^")
+                    {
+                        b3 = true;
+                    }
+                }
+                if(b1 == true && b2==true && b3 == true)
+                {
+                    save1 = true;
+                    Im2.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    TbPassword.ToolTip = toolTip;
+                    BtnReg.IsEnabled = false;
+                }
+            }
+            else
+            {
+                TbPassword.ToolTip = toolTip;
+                BtnReg.IsEnabled = false;
+            }
+
+            Up();
+
+        }
+
+        private void TbLogin_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            save2 = false;
+            ToolTip toolTip = new ToolTip();
+            StackPanel toolTipPanel = new StackPanel();
+            //toolTipPanel.Children.Add(new TextBlock { Text = "Уведомление", FontSize = 16 });
+            toolTipPanel.Children.Add(new TextBlock { Text = "Ваш логин должен быть уникальным" });
+         
+            toolTip.Content = toolTipPanel;
+           User UserInDB = ConnectClass.db.User.Where(x => x.LogIn.ToString() == TbLogin.Text.ToString()).FirstOrDefault();
+            if (UserInDB == null)
+            {
+                save2 = true;
+                Im1.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                TbLogin.ToolTip = toolTip;
+            }
+
+            Up();
+
+        }
+
+        private void Up()
+        {
+            if (save1 == true && save2 == true)
+            {
+                BtnReg.IsEnabled = true;
+            }
         }
     }
 }

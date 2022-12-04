@@ -24,7 +24,7 @@
             <StackPanel Grid.RowSpan="4" Grid.Column="0" Background="WhiteSmoke"></StackPanel>
             <StackPanel Grid.Row="3" Grid.Column="1">
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="Add" Click="Add_Click">Добавить</Button>
+                    <Button  x:Name="Add" Click="Add_Click">Добавить</Button>
                 </StackPanel>
             </StackPanel>
             <StackPanel Grid.Row="2" Grid.Column="0" Grid.RowSpan="2">
