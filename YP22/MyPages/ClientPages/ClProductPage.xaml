@@ -9,55 +9,111 @@
       Title="ClProductPage">
 
     <Grid>
-        <ListView x:Name="ListProduct" d:ItemsSource="{d:SampleData}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="37*"/>
+            <RowDefinition Height="384*"/>
+            <RowDefinition Height="29*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>Ед. изм</TextBlock>
+                <ComboBox SelectedIndex="0" Width="100"  Margin="5 0 0 0" Height="20"  SelectionChanged="CbUnit_SelectionChanged"  x:Name="CbUnit" >
+                    <ComboBoxItem>Все</ComboBoxItem>
+                    <ComboBoxItem>Без ед.изм.</ComboBoxItem>
+                    <ComboBoxItem>кг.</ComboBoxItem>
+                    <ComboBoxItem>м.</ComboBoxItem>
+                    <ComboBoxItem>л.</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>Сортировать:</TextBlock>
+                <ComboBox SelectedIndex="0" Width="250"  Margin="5 0 0 0" Height="20" SelectionChanged="CbSort_SelectionChanged"  x:Name="CbSort">
+                    <ComboBoxItem>Без сортировки</ComboBoxItem>
+                    <ComboBoxItem>Наименование</ComboBoxItem>
+                    <ComboBoxItem>Дата добавления</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBox  Height="20"  x:Name="TbSearch" TextChanged="TbSearch_TextChanged"  Width="250"  Margin="5 0 0 0"></TextBox>
+                <Image Source="C:\Users\MSSI\source\repos\YP22\YP22\Resourse\лупа1.png" Height="15"></Image>
+            </StackPanel>
+
+            <TextBlock> Выводить по:</TextBlock>
+            <ComboBox x:Name="CbCountVisible" Width="100" Height="30" SelectedIndex="0" SelectionChanged="CbCountVisible_SelectionChanged">
+                <ComboBoxItem>Все</ComboBoxItem>
+                <ComboBoxItem>10</ComboBoxItem>
+                <ComboBoxItem>50</ComboBoxItem>
+                <ComboBoxItem>200</ComboBoxItem>
+            </ComboBox>
+
+            <StackPanel>
+                <TextBlock>Были добавлены <LineBreak/> в текущем месяце</TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <ListView x:Name="ListProduct" d:ItemsSource="{d:SampleData}" Grid.Row="1" >
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="5*"></ColumnDefinition>
-                            <ColumnDefinition Width="5*"></ColumnDefinition>
-                            <ColumnDefinition Width="5*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"></RowDefinition>
-                            <RowDefinition Height="1*"></RowDefinition>
-                            <RowDefinition Height="1*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="3">
-                            <Border BorderBrush="Aqua" BorderThickness="3">
-                                <Image Width="50" Height="50"></Image>
-                            </Border>
-                        </StackPanel>
-                        <StackPanel Grid.Row="0" Grid.Column="1">
-                            <TextBlock Text="{Binding Name}"></TextBlock>
-                        </StackPanel>
-                        <StackPanel Width="500" Grid.Row="1" Grid.Column="1">
-                            <TextBlock Text="{Binding Description}"></TextBlock>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock>Стоимость:</TextBlock>
-                                <TextBlock Text="{Binding Price}"></TextBlock>
+                    <Border  BorderThickness="{Binding borderTich}" BorderBrush="#A9808080" Padding="10" CornerRadius="5,5,5,5">
+
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5*"></ColumnDefinition>
+                                <ColumnDefinition Width="5*"></ColumnDefinition>
+                                <ColumnDefinition Width="5*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="3">
+                                <Border BorderBrush="Aqua" BorderThickness="3">
+                                    <Image Width="50" Height="50"></Image>
+                                </Border>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock>В наличии:</TextBlock>
-                                <TextBlock Text="{Binding Count}"></TextBlock>
+                            <StackPanel Grid.Row="0" Grid.Column="1">
+                                <TextBlock Text="{Binding Name}"></TextBlock>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock>Ед. изм.:</TextBlock>
-                                <TextBlock Text="{Binding Unit.Name}"></TextBlock>
+                            <StackPanel Width="500" Grid.Row="1" Grid.Column="1">
+                                <TextBlock Text="{Binding Description}"></TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Стоимость:</TextBlock>
+                                    <TextBlock Text="{Binding Price}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>В наличии:</TextBlock>
+                                    <TextBlock Text="{Binding Count}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Ед. изм.:</TextBlock>
+                                    <TextBlock Text="{Binding Unit.Name}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Дата добавления товара:</TextBlock>
+                                    <TextBlock Text="{Binding Date , StringFormat= dd.MM.yy }"></TextBlock>
+                                </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock>Дата добавления товара:</TextBlock>
-                                <TextBlock Text="{Binding Date , StringFormat= dd.MM.yy }"></TextBlock>
+
+                            <StackPanel Grid.Column="2" Grid.RowSpan="3" VerticalAlignment="Center">
+                                <Button x:Name="BtnOrderAdd" Click="BtnOrderAdd_Click" Visibility="{Binding visibleBtn}">Добавить в корзину</Button>
+                                <TextBlock  Background="#3FFF0000" Visibility="{Binding visibilityCount}">Нет в наличии</TextBlock>
+                                <Button x:Name="BtnReadSupplier" Click="BtnReadSupplier_Click" Margin="0 10 0 0" >Поставщики товара</Button>
                             </StackPanel>
-                        </StackPanel>
-                        
-                        <StackPanel Grid.Column="2" Grid.RowSpan="3" VerticalAlignment="Center">
-                            <Button x:Name="BtnOrderAdd" Click="BtnOrderAdd_Click">Добавить в корзину</Button>
-                            <Button x:Name="BtnReadSupplier" Click="BtnReadSupplier_Click" Margin="0 10 0 0" >Поставщики товара</Button>
-                        </StackPanel>
-                    </Grid>
+                        </Grid>
+                    </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="2">
+            <Button Height="20" x:Name="BtnLeft" Click="BtnLeft_Click" Margin="0 0 10 0">Left</Button>
+            <TextBlock x:Name="TxtRealCount" Margin="0 0 10 0"> </TextBlock>
+            <TextBlock Margin="0 0 10 0"> из </TextBlock>
+            <TextBlock x:Name="TxtMaxCount" Margin="0 0 10 0"></TextBlock>
+            <Button Height="20" x:Name="BtnRight" Click="BtnRight_Click">Right</Button>
+        </StackPanel>
     </Grid>
 </Page>

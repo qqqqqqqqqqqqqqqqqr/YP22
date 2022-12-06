@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using YP22.MyPages.ClientPages;
-
+using YP22.DBConnect;
 namespace YP22.MyPages
 {
     /// <summary>
@@ -40,7 +40,7 @@ namespace YP22.MyPages
 
         private void BtnStory_Click(object sender, RoutedEventArgs e)
         {
-
+            MyFrames.Navigate(new MyPages.ClientPages.ClientMyOrdersPage());
         }
     }
 }

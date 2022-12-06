@@ -16,6 +16,7 @@ using YP22.DBConnect;
 using YP22.Classes;
 using YP22.MyWindow;
 using System.Timers;
+using System.Windows.Threading;
 
 namespace YP22.MyPages
 {
@@ -28,53 +29,63 @@ namespace YP22.MyPages
         public AuthPage()
         {
             InitializeComponent();
+
         }
 
-        Timer timer = new Timer();
+        DispatcherTimer timer = new DispatcherTimer();
 
      
-        public void ElapsedEventHandler(object sender, ElapsedEventArgs e)
+        public void isVisibleBtn(object sender, EventArgs e)
         {
             RegPage.IsEnabled = true;
             Auth.IsEnabled = true;
             count = 0;
+            timer.Stop();
        
         }
         private void Auth_Click(object sender, RoutedEventArgs e)
         {
-            User user = new User();
-            user = DBConnect.ConnectClass.db.User.Where(x => TbLogin.Text.Length > 0 && TbPassword.Text.Length > 0 && (x.LogIn == TbLogin.Text && x.Password.Trim() == TbPassword.Text.Trim())).FirstOrDefault();
-            if (user == null)
+            if(TbLogin.Text.Length > 0 && TbPassword.Text.Trim().Length > 0)
             {
-                if(count < 3)
+                User user = new User();
+                user = DBConnect.ConnectClass.db.User.Where(x => TbLogin.Text.Length > 0 && TbPassword.Text.Length > 0 && (x.LogIn == TbLogin.Text && x.Password.Trim() == TbPassword.Text.Trim())).FirstOrDefault();
+                if (user == null)
                 {
-                    count++;
-                    MessageBox.Show("Данные введены неверно.У вас соталось" +(3-count)+ " попытки до блокировки.");
+                    if (count < 2)
+                    {
+                        count++;
+                        MessageBox.Show("Данные введены неверно. Попыток до блокировки: " + (3 - count) + ".");
+                        TbLogin.Text = null;
+                        TbPassword.Text = null;
+                    }
+                    else if (count == 2)
+                    {
+                        MessageBox.Show("Доступ к авторизации и регистрации будет заблокирован на 2 минуты");
+                        RegPage.IsEnabled = false;
+                        Auth.IsEnabled = false;
+                        timer.Interval = new TimeSpan(0, 0, 15);
+                        timer.Tick += new EventHandler(isVisibleBtn);
+                        timer.Start();
+
+                    }
+
                 }
-                else if (count == 3)
+                else
                 {
-                    RegPage.IsEnabled = false;
-                    Auth.IsEnabled = false;
+                    AuthUser.user = user;
+                    MessageBox.Show("Авторизация выполнена успешно");
+                    MainWindow2 window2 = new MainWindow2();
 
+                    window2.Show();
+                    MainWindow.window.Close();
 
-                    timer.Enabled = true;
-                    timer.Interval = 2000;
-                    timer.Start();
-                    timer.Elapsed += new ElapsedEventHandler(ElapsedEventHandler);
-                    
                 }
-             
             }
             else
             {
-                AuthUser.user = user;
-                MessageBox.Show("Авторизация выполнена успешно");
-                MainWindow2 window2 = new MainWindow2();
-                
-                window2.Show();
-                MainWindow.window.Close();
-               
+                MessageBox.Show("Заполните все поля");
             }
+           
         }
 
     

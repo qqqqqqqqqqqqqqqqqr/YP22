@@ -8,9 +8,38 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AdminProductPage">
 
-    <Grid>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="29*"/>
+            <RowDefinition Height="421*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>Ед. изм</TextBlock>
+                <ComboBox Height="20" SelectionChanged="CbUnit_SelectionChanged" x:Name="CbUnit" Width="100">
+                    <ComboBoxItem> Все </ComboBoxItem>
+                    <ComboBoxItem> Без ед.изм. </ComboBoxItem>
+                    <ComboBoxItem> кг. </ComboBoxItem>
+                    <ComboBoxItem> м. </ComboBoxItem>
+                    <ComboBoxItem> л. </ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
 
-        <ListView x:Name="ListProduct" d:ItemsSource="{d:SampleData}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>Сортировать:</TextBlock>
+                <ComboBox  Height="20" Width="250"  Margin="5 0 0 0" SelectionChanged="CbSort_SelectionChanged"  x:Name="CbSort">
+                    <ComboBoxItem>Без сортировки</ComboBoxItem>
+                    <ComboBoxItem>Наименование</ComboBoxItem>
+                    <ComboBoxItem>Дата добавления</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBox  Height="20"  x:Name="TbSearch" TextChanged="TbSearch_TextChanged" Width="250"></TextBox>
+                <Image Source="C:\Users\MSSI\source\repos\YP22\YP22\Resourse\лупа1.png" Height="15" Margin="5 0 0 0"></Image>
+            </StackPanel>
+        </StackPanel>
+        <ListView x:Name="ListProduct" d:ItemsSource="{d:SampleData}" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -53,7 +82,7 @@
                         </StackPanel>
 
                         <StackPanel Grid.Column="2" Grid.RowSpan="3" VerticalAlignment="Center">
-                          
+
                             <Button Click="BtnAdd_Click" x:Name="BtnAdd">Редактировать</Button>
                             <Button x:Name="BtnDelete" Click="BtnDelete_Click">Удалить</Button>
                         </StackPanel>

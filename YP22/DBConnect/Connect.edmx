@@ -36,6 +36,8 @@
           <Property Name="ExecutionStageId" Type="int" />
           <Property Name="Customer" Type="int" />
           <Property Name="Executor" Type="int" />
+          <Property Name="CountSumm" Type="int" />
+          <Property Name="PriceSumm" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="OrderProduct">
           <Key>
@@ -170,7 +172,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_User1">
+        <Association Name="FK_Order_User3">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -308,7 +310,7 @@
             <End Role="User" EntitySet="User" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_User1" Association="Self.FK_Order_User1">
+          <AssociationSet Name="FK_Order_User3" Association="Self.FK_Order_User3">
             <End Role="User" EntitySet="User" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
@@ -386,9 +388,11 @@
           <Property Name="Customer" Type="Int32" />
           <Property Name="Executor" Type="Int32" />
           <NavigationProperty Name="ExecutionStage" Relationship="Self.FK_Order_ExecutionStage" FromRole="Order" ToRole="ExecutionStage" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Order_User" FromRole="Order" ToRole="User" />
           <NavigationProperty Name="User1" Relationship="Self.FK_Order_User1" FromRole="Order" ToRole="User" />
           <NavigationProperty Name="OrderProduct" Relationship="Self.FK_OrderProduct_Order" FromRole="Order" ToRole="OrderProduct" />
+          <NavigationProperty Name="User" Relationship="YP22Model.FK_Order_User" FromRole="Order" ToRole="User" />
+          <Property Name="CountSumm" Type="Int32" />
+          <Property Name="PriceSumm" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="OrderProduct">
           <Key>
@@ -488,9 +492,9 @@
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_User" FromRole="User" ToRole="Order" />
           <NavigationProperty Name="Order1" Relationship="Self.FK_Order_User1" FromRole="User" ToRole="Order" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Order" Relationship="YP22Model.FK_Order_User" FromRole="User" ToRole="Order" />
         </EntityType>
         <Association Name="FK_AdmissionProduct_AcceptanceStatus">
           <End Role="AcceptanceStatus" Type="Self.AcceptanceStatus" Multiplicity="0..1" />
@@ -537,18 +541,6 @@
             </Principal>
             <Dependent Role="Order">
               <PropertyRef Name="ExecutionStageId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Order_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="Customer" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -678,10 +670,6 @@
             <End Role="ExecutionStage" EntitySet="ExecutionStage" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_User" Association="Self.FK_Order_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
           <AssociationSet Name="FK_Order_User1" Association="Self.FK_Order_User1">
             <End Role="User" EntitySet="User" />
             <End Role="Order" EntitySet="Order" />
@@ -714,7 +702,23 @@
             <End Role="SupplierСountry" EntitySet="SupplierСountry" />
             <End Role="SupplierProduct" EntitySet="SupplierProduct" />
           </AssociationSet>
+          <AssociationSet Name="FK_Order_User" Association="YP22Model.FK_Order_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Order_User">
+          <End Type="YP22Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="YP22Model.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -749,6 +753,8 @@
           <EntitySetMapping Name="Order">
             <EntityTypeMapping TypeName="YP22Model.Order">
               <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="PriceSumm" ColumnName="PriceSumm" />
+                <ScalarProperty Name="CountSumm" ColumnName="CountSumm" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Data" ColumnName="Data" />
                 <ScalarProperty Name="ExecutionStageId" ColumnName="ExecutionStageId" />

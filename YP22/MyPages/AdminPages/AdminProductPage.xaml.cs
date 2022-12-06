@@ -24,7 +24,54 @@ namespace YP22.MyPages.AdminPages
         public AdminProductPage()
         {
             InitializeComponent();
+
+   
             ListProduct.ItemsSource = DBConnect.ConnectClass.db.Product.Where(x => x.IsDelete != true).ToList();
+        }
+
+        private void Up()
+        {
+            List<Product> products = DBConnect.ConnectClass.db.Product.Where(x => x.IsDelete != true).ToList();
+
+            if (CbUnit.SelectedIndex == 1)
+            {
+                products = products.Where(x => x.UnitID == 4).ToList();
+            }
+            else if (CbUnit.SelectedIndex == 2)
+            {
+                products = products.Where(x=> x.UnitID == 1).ToList();
+            }
+            else if (CbUnit.SelectedIndex == 3)
+            {
+                products = products.Where(x => x.UnitID == 2).ToList();
+            }
+            else if (CbUnit.SelectedIndex == 4)
+            {
+                products = products.Where(x => x.UnitID == 3).ToList();
+            }
+          
+            if(CbSort.SelectedIndex == 1)
+            {
+                products = products.OrderBy(x => x.Name).ToList();
+               
+            }
+            else if (CbSort.SelectedIndex == 2)
+            {
+                products = products.OrderByDescending(x => x.Date).ToList();
+
+            }
+
+            if(TbSearch.Text.Length > 0)
+            {
+     
+                products = products.Where(x => ( x.Name != null &&  x.Name.ToLower().StartsWith(TbSearch.Text.ToLower()) ) || ( x.Description != null &&  x.Description.ToLower().StartsWith(TbSearch.Text.ToLower()))).ToList();
+
+
+            }
+
+            ListProduct.ItemsSource = products.ToList();
+
+
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
@@ -61,6 +108,21 @@ namespace YP22.MyPages.AdminPages
 
         }
 
-       
+        private void TbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Up();
+
+        }
+
+        private void CbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Up();
+
+        }
+
+        private void CbUnit_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Up();
+        }
     }
 }

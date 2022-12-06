@@ -41,7 +41,7 @@
                                     <TextBlock DataContext="{Binding Product}"   Text="{Binding Description}"></TextBlock>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock>Стоимость:</TextBlock>
-                                        <TextBlock Text="{Binding Price}"></TextBlock>
+                                        <TextBlock DataContext="{Binding Product}" Text="{Binding Price}"></TextBlock>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock>В наличии:</TextBlock>
@@ -74,12 +74,12 @@
             <StackPanel Grid.Row="2">
                 <StackPanel Orientation="Horizontal">
                     <Button Margin="5" x:Name="BtnClear" Click="BtnClear_Click"> Очистить корзину </Button>
-                    <Button Margin="5"> Оформить заказ </Button>
+                    <Button x:Name="BtnBuy" Click="BtnBuy_Click" Margin="5"> Оформить заказ </Button>
                     <TextBlock Margin="5"> Количество товаров:</TextBlock>
-                    <TextBlock Margin="5"></TextBlock>
+                    <TextBlock  x:Name="TxtCountProduct" Margin="5">0</TextBlock>
                    
-                    <TextBlock Margin="5">Итоговая сумма:</TextBlock>
-                    <TextBlock Margin="5"></TextBlock>
+                    <TextBlock  Margin="5">Итоговая сумма:</TextBlock>
+                    <TextBlock x:Name="TxtSumm" Margin="5">0</TextBlock>
                     
                 </StackPanel>
             </StackPanel>
