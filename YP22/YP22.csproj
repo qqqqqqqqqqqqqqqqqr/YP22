@@ -139,6 +139,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MyPages\AdminPages\AdminAllOrderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MyPages\AdminPages\AdminCountryEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -183,6 +187,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MyPages\ManagerPages\ManagerEditStatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MyPages\ManagerPages\ManagerOrdersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MyPages\RegistrationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -199,6 +211,9 @@
   <ItemGroup>
     <Compile Include="MyPages\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MyPages\AdminPages\AdminAllOrderPage.xaml.cs">
+      <DependentUpon>AdminAllOrderPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MyPages\AdminPages\AdminCountryEditPage.xaml.cs">
       <DependentUpon>AdminCountryEditPage.xaml</DependentUpon>
@@ -232,6 +247,12 @@
     </Compile>
     <Compile Include="MyPages\ManagerPage.xaml.cs">
       <DependentUpon>ManagerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MyPages\ManagerPages\ManagerEditStatePage.xaml.cs">
+      <DependentUpon>ManagerEditStatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MyPages\ManagerPages\ManagerOrdersPage.xaml.cs">
+      <DependentUpon>ManagerOrdersPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MyPages\RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
@@ -286,6 +307,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Resourse\Мармелад1.webp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -294,7 +316,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="MyPages\ManagerPages\" />
     <Folder Include="MyPages\StorekeeperPages\" />
   </ItemGroup>
   <ItemGroup>
@@ -308,6 +329,23 @@
       <DependentUpon>Connect.edmx</DependentUpon>
       <LastGenOutput>Connect.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resourse\заглушка.jpg" />
+    <Resource Include="Resourse\Конфеты1.png" />
+    <Resource Include="Resourse\Конфеты2.png" />
+    <Resource Include="Resourse\Конфеты3.png" />
+    <Resource Include="Resourse\Конфеты4.png" />
+    <Resource Include="Resourse\Конфеты5.png" />
+    <Resource Include="Resourse\Мармелад2.png" />
+    <Resource Include="Resourse\Мармелад3.png" />
+    <Resource Include="Resourse\Мармелад4.png" />
+    <Resource Include="Resourse\Пуддинг1.png" />
+    <Resource Include="Resourse\сок.jpg" />
+    <Resource Include="Resourse\сок1.jpg" />
+    <Resource Include="Resourse\сок2.jpg" />
+    <Resource Include="Resourse\сок3.jpg" />
+    <Content Include="Resourse\сок4.jfif" />
+    <Resource Include="Resourse\Шоколад1.png" />
+    <Content Include="Resourse\Шоколад2.jfif" />
     <Resource Include="Resourse\лупа1.png" />
     <Resource Include="Resourse\лупа.png" />
     <Resource Include="Resourse\галка.png" />

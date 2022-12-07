@@ -21,12 +21,21 @@ namespace YP22.MyPages.AdminPages
     /// </summary>
     public partial class AdminProductPage : Page
     {
+        int MaxCount = 0;
+        int RealCount = 0;
+        int ActualPages = 0;
+        int OneCount = 0;
         public AdminProductPage()
         {
             InitializeComponent();
 
    
             ListProduct.ItemsSource = DBConnect.ConnectClass.db.Product.Where(x => x.IsDelete != true).ToList();
+            MaxCount = (DBConnect.ConnectClass.db.Product.Where(x => x.IsDelete != true).ToList()).Count;
+            RealCount = MaxCount;
+            TxtMaxCount.Text = MaxCount.ToString();
+            TxtRealCount.Text = RealCount.ToString();
+
         }
 
         private void Up()
@@ -36,10 +45,11 @@ namespace YP22.MyPages.AdminPages
             if (CbUnit.SelectedIndex == 1)
             {
                 products = products.Where(x => x.UnitID == 4).ToList();
+
             }
             else if (CbUnit.SelectedIndex == 2)
             {
-                products = products.Where(x=> x.UnitID == 1).ToList();
+                products = products.Where(x => x.UnitID == 1).ToList();
             }
             else if (CbUnit.SelectedIndex == 3)
             {
@@ -49,30 +59,59 @@ namespace YP22.MyPages.AdminPages
             {
                 products = products.Where(x => x.UnitID == 3).ToList();
             }
-          
-            if(CbSort.SelectedIndex == 1)
+
+
+            if (CbSort != null && CbSort.SelectedIndex == 1)
             {
                 products = products.OrderBy(x => x.Name).ToList();
-               
+
             }
-            else if (CbSort.SelectedIndex == 2)
+            else if (CbSort != null && CbSort.SelectedIndex == 2)
             {
                 products = products.OrderByDescending(x => x.Date).ToList();
 
             }
 
-            if(TbSearch.Text.Length > 0)
+            if (TbSearch != null && TbSearch.Text.Length > 0)
             {
-     
-                products = products.Where(x => ( x.Name != null &&  x.Name.ToLower().StartsWith(TbSearch.Text.ToLower()) ) || ( x.Description != null &&  x.Description.ToLower().StartsWith(TbSearch.Text.ToLower()))).ToList();
+                products = products.Where(x => (x.Name != null && x.Name.ToLower().StartsWith(TbSearch.Text.ToLower())) || (x.Description != null && x.Description.ToLower().StartsWith(TbSearch.Text.ToLower()))).ToList();
+            }
+
+            if (CbCountVisible != null && CbCountVisible.SelectedIndex == 1)
+            {
+                products = products.Skip(ActualPages * 10).Take(10).ToList();
+                OneCount = 10;
+
+            }
+            else if (CbCountVisible != null && CbCountVisible.SelectedIndex == 2)
+            {
+                products = products.Skip(ActualPages * 50).Take(50).ToList();
+                OneCount = 50;
+
+
+            }
+            else if (CbCountVisible != null && CbCountVisible.SelectedIndex == 3)
+            {
+                products = products.Skip(ActualPages * 200).Take(200).ToList();
+                OneCount = 200;
 
 
             }
 
-            ListProduct.ItemsSource = products.ToList();
+            if (ChecedMonth != null && ChecedMonth.IsChecked == true)
+            {
+                DateTime date = DateTime.Now;
 
+                products = products.Where(x => x.Date >= new DateTime(date.Year, date.Month, 1) && x.Date <= new DateTime(date.Year, date.Month, 31)).ToList();
+            }
 
-        }
+            if (ListProduct != null)
+            {
+                ListProduct.ItemsSource = products;
+                RealCount = products.Count;
+                TxtRealCount.Text = RealCount.ToString();
+            }
+            }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -121,6 +160,38 @@ namespace YP22.MyPages.AdminPages
         }
 
         private void CbUnit_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Up();
+        }
+
+        private void CbCountVisible_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Up();
+        }
+
+        private void BtnLeft_Click(object sender, RoutedEventArgs e)
+        {
+            if (ActualPages > 0)
+            {
+                ActualPages--;
+                Up();
+            }
+
+        }
+
+        private void BtnRight_Click(object sender, RoutedEventArgs e)
+        {
+            if (RealCount >= OneCount)
+            {
+                ActualPages++;
+                Up();
+            }
+
+
+
+        }
+
+        private void ChecedMonth_Click(object sender, RoutedEventArgs e)
         {
             Up();
         }

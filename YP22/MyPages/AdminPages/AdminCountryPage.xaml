@@ -12,7 +12,7 @@
         <ListView x:Name="ListCountry" d:ItemsSource="{d:SampleData}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid Width="700">
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
@@ -29,7 +29,7 @@
                         <StackPanel Grid.Row="1" Orientation="Horizontal">
                             <Button x:Name="BtnEdit" Click="BtnEdit_Click" Margin="10"> Редактировать</Button>
                             <Button x:Name="BtnDelete" Click="BtnDelete_Click" Margin="10"> Удалить</Button>
-                            <Button x:Name="BtnProducts" Click="BtnProducts_Click" Margin="10"> Посмотреть список поставляемых товаров</Button>
+                            <!--<Button x:Name="BtnProducts" Click="BtnProducts_Click" Margin="10"> Посмотреть список поставляемых товаров</Button>-->
                         </StackPanel>
                     </Grid>
                 </DataTemplate>

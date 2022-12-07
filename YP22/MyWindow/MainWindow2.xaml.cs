@@ -21,9 +21,11 @@ namespace YP22.MyWindow
     /// </summary>
     public partial class MainWindow2 : Window
     {
+        public static MainWindow2 Window2 = new MainWindow2();
         public MainWindow2()
         {
             InitializeComponent();
+            Window2 = this;
             if (AuthUser.user.RoleId == 1)
             {
                 MyFrame.Navigate(new ClientPage()) ;
@@ -31,6 +33,10 @@ namespace YP22.MyWindow
             else if (AuthUser.user.RoleId == 2)
             {
                 MyFrame.Navigate(new AdminPage());
+            }
+            else if (AuthUser.user.RoleId == 3)
+            {
+                MyFrame.Navigate(new ManagerPage());
             }
         }
     }

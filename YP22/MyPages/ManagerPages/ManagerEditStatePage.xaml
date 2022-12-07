@@ -1,0 +1,56 @@
+﻿<Page x:Class="YP22.MyPages.ManagerPages.ManagerEditStatePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:YP22.MyPages.ManagerPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ManagerEditStatePage">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Margin="0 -70 0 0" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" FontStyle="Normal" TextDecorations="{x:Null}"> Изменение статуса заказа </TextBlock>
+            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <TextBlock Margin="0 0 10 5">Номер заказа:</TextBlock>
+                <TextBlock Margin="0 0 10 5" Text="{Binding id}"></TextBlock>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <TextBlock Margin="0 0 10 5">Дата оформления:</TextBlock>
+                <TextBlock Margin="0 0 10 5" Text="{Binding Data , StringFormat= dd.MM.yy}"></TextBlock>
+            </StackPanel>
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left">
+                <TextBlock Margin="0 0 10 5">Статус заказа:</TextBlock>
+                <ComboBox Margin="0 0 10 5" Width="200" x:Name="CbState">
+                    <ComboBoxItem>Отклонен</ComboBoxItem>
+                    <ComboBoxItem>К оплате</ComboBoxItem>
+                    <ComboBoxItem>Оплачен</ComboBoxItem>
+                    <ComboBoxItem>Выполнение</ComboBoxItem>
+                    <ComboBoxItem>Готов</ComboBoxItem>
+                    <ComboBoxItem>В обработке</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0 0 5 5">Товаров</TextBlock>
+                        <TextBlock Margin="0 0 5 5" Text="{Binding CountSumm}"></TextBlock>
+                        <TextBlock Margin="0 0 5 5">шт.</TextBlock>
+                        <TextBlock Margin="0 0 5 5">на сумму</TextBlock>
+                        <TextBlock Margin="0 0 5 5" Text="{Binding PriceSumm}" ></TextBlock>
+                        <TextBlock>руб.:</TextBlock>
+                    </StackPanel>
+                    
+                </StackPanel>
+                </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <TextBlock Margin="0 0 10 5">Заказчик:</TextBlock>
+                <TextBlock Margin="0 0 10 5" Text="{Binding User.Name}"></TextBlock>
+            </StackPanel>
+            <Button  Margin="5" x:Name="BtnSave" Click="BtnSave_Click" HorizontalAlignment="Center" Width="200" >Сохранить</Button>
+            <Button Margin="5" x:Name="BtnOtmena" Click="BtnOtmena_Click" HorizontalAlignment="Center" Width="200" >Отменить</Button>
+        </StackPanel>
+    </Grid>
+</Page>

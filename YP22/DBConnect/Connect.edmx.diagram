@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f1329d92031a4a4c9610df5272f8651c" Name="Diagram1" ZoomLevel="98">
+      <Diagram DiagramId="f1329d92031a4a4c9610df5272f8651c" Name="Diagram1" ZoomLevel="40">
         <EntityTypeShape EntityType="YP22Model.AcceptanceStatus" Width="1.5" PointX="7.75" PointY="9.875" IsExpanded="true" />
         <EntityTypeShape EntityType="YP22Model.AdmissionProduct" Width="1.5" PointX="10" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="YP22Model.ExecutionStage" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />

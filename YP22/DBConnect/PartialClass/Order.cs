@@ -14,7 +14,7 @@ namespace YP22.DBConnect
         {
             get
             {
-                if (Executor == null )
+                if (Executor == null)
                     return "Исполнитель не назначен.Ожидайте";
                 else
                     return User1.Name;
@@ -31,5 +31,20 @@ namespace YP22.DBConnect
                     return Visibility.Hidden;
             }
         }
+
+        public Visibility ManagerOrder
+        {
+            get
+            {
+                if (Executor == YP22.Classes.AuthUser.user.id)
+                {
+                    return Visibility.Visible;
+                }
+                else
+                    return Visibility.Hidden;
+            }
+        }
+
+        
     }
 }

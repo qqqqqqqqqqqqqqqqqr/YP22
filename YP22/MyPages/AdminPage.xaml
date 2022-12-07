@@ -24,17 +24,20 @@
             <StackPanel Grid.RowSpan="4" Grid.Column="0" Background="WhiteSmoke"></StackPanel>
             <StackPanel Grid.Row="3" Grid.Column="1">
                 <StackPanel Orientation="Horizontal">
-                    <Button  x:Name="Add" Click="Add_Click">Добавить</Button>
+                    <Button Margin="5"  x:Name="Add" Click="Add_Click">Добавить</Button>
                 </StackPanel>
             </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="1">
+                <Button Margin="5" x:Name="BtnExit" Width="150" HorizontalAlignment="Right" Click="BtnExit_Click"> Выйти из аккаунта</Button>
+            </StackPanel> 
             <StackPanel Grid.Row="2" Grid.Column="0" Grid.RowSpan="2">
-                <Button x:Name="BtnProduct" Click="BtnProduct_Click">Продукция</Button>
-                <Button x:Name="BtnOrders" Click="BtnOrders_Click">Заказы</Button>
-               
-                <Button x:Name="BtnCountry" Click="BtnCountry_Click">
-                    <TextBlock TextAlignment="Center"> Страны <LineBreak/> поставщики</TextBlock>
+                <Button Margin="5" x:Name="BtnProduct" Click="BtnProduct_Click">Продукция</Button>
+                <Button Margin="5" x:Name="BtnOrders" Click="BtnOrders_Click">Заказы</Button>
+
+                <Button Margin="5" x:Name="BtnCountry" Click="BtnCountry_Click">
+                    <TextBlock  TextAlignment="Center"> Страны <LineBreak/> поставщики</TextBlock>
                 </Button>
-                <Button x:Name="BtnUser" Click="BtnUser_Click">Пользователи</Button>
+                <!--<Button x:Name="BtnUser" Click="BtnUser_Click">Пользователи</Button>-->
             </StackPanel>
 
             <Frame x:Name="MyFrame" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"></Frame>

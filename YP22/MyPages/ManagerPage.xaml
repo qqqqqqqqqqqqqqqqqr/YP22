@@ -11,22 +11,36 @@
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="50*"/>
-                <RowDefinition Height="55*"/>
-                <RowDefinition Height="529*"/>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="39*"/>
+                <RowDefinition Height="329*"/>
+                <RowDefinition Height="46*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="139*"/>
                 <ColumnDefinition Width="861*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Background="WhiteSmoke"></StackPanel>
-            <StackPanel Grid.RowSpan="3" Grid.Column="0" Background="WhiteSmoke"></StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="0">
-                <Button>Продукция</Button>
-                <Button>Мои заказы</Button>
+            <StackPanel Grid.RowSpan="4" Grid.Column="0" Background="WhiteSmoke"></StackPanel>
+            <StackPanel Grid.Row="3" Grid.Column="1">
+                <StackPanel Orientation="Horizontal">
+                    <!--<Button  x:Name="Add" Click="Add_Click">Добавить</Button>-->
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="1">
+                <Button Margin="10"  x:Name="BtnExit" Click="BtnExit_Click" Width="150" HorizontalAlignment="Right">Выйти из аккаунта</Button>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Grid.Column="0" Grid.RowSpan="2">
+                
+                <Button x:Name="BtnOrders">Заказы</Button>
+
+                <!--<Button x:Name="BtnCountry">
+                    <TextBlock TextAlignment="Center"> Страны <LineBreak/> поставщики</TextBlock>
+                </Button>-->
+                <!--<Button x:Name="BtnUser" Click="BtnUser_Click">Пользователи</Button>-->
             </StackPanel>
 
-            <Frame Grid.Column="1" x:Name="MyFrame" Margin="0,50,0,0" Grid.RowSpan="3"/>
+            <Frame x:Name="MyFrame" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"></Frame>
         </Grid>
     </Grid>
 </Page>

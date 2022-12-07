@@ -20,9 +20,31 @@ namespace YP22.MyPages
     /// </summary>
     public partial class ManagerPage : Page
     {
+   
+     
+
         public ManagerPage()
         {
             InitializeComponent();
+            MyFrame.Navigate(new MyPages.ManagerPages.ManagerOrdersPage());
+
+    }
+
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Вы точно хотите выйти из аккаунта?", "Уведомление", MessageBoxButton.YesNo) ==
+            MessageBoxResult.Yes)
+            {
+                MainWindow mainWindow = new MainWindow();
+                YP22.Classes.AuthUser.user = null;
+                YP22.Classes.AuthUser.order = null;
+
+                mainWindow.Show();
+                MyWindow.MainWindow2.Window2.Close();
+
+            }
+            else
+                MessageBox.Show("Вы отменили выход");
         }
     }
 }

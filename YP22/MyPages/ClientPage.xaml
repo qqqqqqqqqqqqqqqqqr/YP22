@@ -18,6 +18,7 @@
             <ColumnDefinition Width="139*"/>
             <ColumnDefinition Width="861*"/>
         </Grid.ColumnDefinitions>
+      
         <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Background="WhiteSmoke"></StackPanel>
         <StackPanel Grid.RowSpan="3" Grid.Column="0" Background="WhiteSmoke"></StackPanel>
         <StackPanel Grid.Row="2" Grid.Column="0">
@@ -26,7 +27,9 @@
             <Button x:Name="BtnStory" Click="BtnStory_Click" Margin="5">Мои заказы</Button>
             
         </StackPanel>
-
-        <Frame  Grid.Column="1" x:Name="MyFrames" Grid.RowSpan="3" NavigationUIVisibility="Hidden"/>
+        <StackPanel Grid.Row="0" Grid.Column="2">
+            <Button Margin="5" x:Name="BtnExit" Width="150" HorizontalAlignment="Right" Click="BtnExit_Click">Выйти из аккаунта</Button>
+        </StackPanel>
+        <Frame  Grid.Column="1" x:Name="MyFrames" Grid.Row="1" Grid.RowSpan="2" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>

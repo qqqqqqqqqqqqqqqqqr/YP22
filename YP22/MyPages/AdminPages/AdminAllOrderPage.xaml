@@ -1,54 +1,58 @@
-﻿<Page x:Class="YP22.MyPages.ClientPages.ClientMyOrdersPage"
+﻿<Page x:Class="YP22.MyPages.AdminPages.AdminAllOrderPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:YP22.MyPages.ClientPages"
+      xmlns:local="clr-namespace:YP22.MyPages.AdminPages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ClientMyOrdersPage">
+      Title="AdminAllOrderPage">
 
     <Grid>
-        <ListView Height="600" x:Name="ListMyOrders" d:ItemsSource="{d:SampleData}">
+        <ListView x:Name="ListMyOrders" d:ItemsSource="{d:SampleData}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Width="951" Margin="5">
+                    <Grid Width="750">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition> <!--заказ номер такой то-->
-                            <RowDefinition></RowDefinition>  <!--статус заказа-->
-                            <RowDefinition></RowDefinition>  <!--Товары -->
-                            <RowDefinition></RowDefinition>  <!--Менеджер-->
+                            <RowDefinition></RowDefinition>
+                            <!--заказ номер такой то-->
+                            <RowDefinition></RowDefinition>
+                            <!--статус заказа-->
+                            <RowDefinition></RowDefinition>
+                            <!--Товары -->
+                            <RowDefinition></RowDefinition>
+                            <!--Менеджер-->
                         </Grid.RowDefinitions>
 
-                        <StackPanel Grid.Column="1" Grid.RowSpan="4" VerticalAlignment="Center" >
-                            <Button  x:Name="BtnExt" Click="BtnExt_Click" Width="200" Visibility="{Binding VisibilityBtnExt}" >Отменить заказ</Button>
-                          
+                        <StackPanel Grid.Column="1" Grid.RowSpan="4">
+                            <Button x:Name="BtnExt" Click="BtnExt_Click"  Width="200" Visibility="{Binding VisibilityBtnExt}" >Отклонить заказ</Button>
+                         
                         </StackPanel>
-                        
-                        <StackPanel Margin="0 0 0 5"  Grid.Row="0" Orientation="Horizontal">
-                            <TextBlock Margin="0 0 10 5" >Заказ №</TextBlock>
-                            <TextBlock Margin="0 0 10 5"  Text="{Binding id}"></TextBlock>
-                            <TextBlock Margin="0 0 10 5"  Text="от"></TextBlock>
+
+                        <StackPanel  Grid.Row="0" Orientation="Horizontal">
+                            <TextBlock>Заказ №</TextBlock>
+                            <TextBlock Text="{Binding id}"></TextBlock>
+                            <TextBlock Text="от"></TextBlock>
                             <TextBlock Text="{Binding Data , StringFormat= dd.MM.yy}"></TextBlock>
 
                         </StackPanel>
                         <StackPanel Grid.Row="1" Orientation="Horizontal">
-                            <TextBlock Margin="0 0 5 5"  >Статус заказа:</TextBlock>
+                            <TextBlock >Статус заказа:</TextBlock>
                             <TextBlock Text="{Binding ExecutionStage.Name}"></TextBlock>
                         </StackPanel>
 
                         <StackPanel Grid.Row="2" Orientation="Horizontal">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock  Margin="0 0 5 5">Товаров</TextBlock>
-                                    <TextBlock Margin="0 0 5 5" Text="{Binding CountSumm}"></TextBlock>
-                                    <TextBlock Margin="0 0 5 5">шт.</TextBlock>
-                                    <TextBlock Margin="0 0 5 5">на сумму</TextBlock>
-                                    <TextBlock Margin="0 0 5 5" Text="{Binding PriceSumm}" ></TextBlock>
+                                    <TextBlock Margin="0 0 5 0">Товаров</TextBlock>
+                                    <TextBlock Margin="0 0 5 0" Text="{Binding CountSumm}"></TextBlock>
+                                    <TextBlock Margin="0 0 5 0">шт.</TextBlock>
+                                    <TextBlock Margin="0 0 5 0">на сумму</TextBlock>
+                                    <TextBlock Margin="0 0 5 0" Text="{Binding PriceSumm}" ></TextBlock>
                                     <TextBlock>руб.:</TextBlock>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
@@ -74,15 +78,21 @@
                                     </ListView>
                                 </StackPanel>
                             </StackPanel>
-                            
-                           
-                        </StackPanel>
 
-                        <StackPanel Grid.Row="3" Orientation="Horizontal">
-                            <TextBlock Margin="0,0,10,5">Менеджер-исполнитель заказа:</TextBlock>
-                            <TextBlock   Text="{Binding ExecutorPC}"></TextBlock>
+
                         </StackPanel>
-                       
+                        <StackPanel Grid.Row="3">
+                            <StackPanel  Orientation="Horizontal">
+                                <TextBlock Margin="0,0,10,0">Менеджер-исполнитель заказа:</TextBlock>
+                                <TextBlock   Text="{Binding ExecutorPC}"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="0,0,10,0">Заказчик:</TextBlock>
+                                <TextBlock   Text="{Binding User.Name}"></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                     
+
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

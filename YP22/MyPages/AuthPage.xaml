@@ -23,7 +23,7 @@
                 <TextBox x:Name="TbPassword" Width="200"></TextBox>
             </StackPanel>
 
-            <CheckBox Margin="5">Запомнить меня</CheckBox>
+            <CheckBox Margin="5" x:Name="CbSaveMe" >Запомнить меня</CheckBox>
             <Button x:Name="Auth" Click="Auth_Click" Width="150" Margin="5">Войти</Button>
             <Button x:Name="RegPage" Click="RegPage_Click"  Width="150" Margin="5">Зарегистрироваться</Button>
 

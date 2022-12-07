@@ -15,13 +15,13 @@
         </Grid.RowDefinitions>
         <StackPanel>
             <StackPanel Grid.Row="0">
-                <ListView x:Name="ListProduct" d:ItemsSource="{d:SampleData}" Grid.RowSpan="2" Height="370">
+                <ListView  x:Name="ListProduct" d:ItemsSource="{d:SampleData}" Grid.RowSpan="2" Height="600">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Grid>
+                            <Grid Width="750">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="5*"></ColumnDefinition>
-                                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1.3*"></ColumnDefinition>
+                                    <ColumnDefinition Width="10*"></ColumnDefinition>
                                     <ColumnDefinition Width="5*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
@@ -30,36 +30,36 @@
                                     <RowDefinition Height="1*"></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="3">
-                                    <Border BorderBrush="Aqua" BorderThickness="3">
-                                        <Image Width="50" Height="50"></Image>
+                                    <Border BorderBrush="#A9808080" BorderThickness="3">
+                                        <Image Source="{ Binding ImageProduct }" Width="50" Height="50"></Image>
                                     </Border>
                                 </StackPanel>
                                 <StackPanel Grid.Row="0" Grid.Column="1">
-                                    <TextBlock DataContext="{Binding Product}" Text="{Binding Name}"></TextBlock>
+                                    <TextBlock  Margin="0 0 5 5"  DataContext="{Binding Product}" Text="{Binding Name}"></TextBlock>
                                 </StackPanel>
-                                <StackPanel Width="500" Grid.Row="1" Grid.Column="1">
-                                    <TextBlock DataContext="{Binding Product}"   Text="{Binding Description}"></TextBlock>
+                                <StackPanel  Width="500" Grid.Row="1" Grid.Column="1">
+                                    <TextBlock  Margin="0 0 5 5"  DataContext="{Binding Product}"   Text="{Binding Description}"></TextBlock>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock>Стоимость:</TextBlock>
-                                        <TextBlock DataContext="{Binding Product}" Text="{Binding Price}"></TextBlock>
+                                        <TextBlock  Margin="0 0 5 5" >Стоимость:</TextBlock>
+                                        <TextBlock  Margin="0 0 5 5"  DataContext="{Binding Product}" Text="{Binding Price}"></TextBlock>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock>В наличии:</TextBlock>
-                                        <TextBlock DataContext="{Binding Product}"  Text="{Binding Count}"></TextBlock>
+                                        <TextBlock  Margin="0 0 5 5" >В наличии:</TextBlock>
+                                        <TextBlock  Margin="0 0 5 5"  DataContext="{Binding Product}"  Text="{Binding Count}"></TextBlock>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock>Ед. изм.:</TextBlock>
-                                        <TextBlock DataContext="{Binding Product}"  Text="{Binding Unit.Name}"></TextBlock>
+                                        <TextBlock  Margin="0 0 5 5" >Ед. изм.:</TextBlock>
+                                        <TextBlock  Margin="0 0 5 5"  DataContext="{Binding Product}"  Text="{Binding Unit.Name}"></TextBlock>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock>Дата добавления товара:</TextBlock>
-                                        <TextBlock DataContext="{Binding Product}"  Text="{Binding Date , StringFormat= dd.MM.yy }"></TextBlock>
+                                        <TextBlock  Margin="0 0 5 5" >Дата добавления товара:</TextBlock>
+                                        <TextBlock  Margin="0 0 5 5"  DataContext="{Binding Product}"  Text="{Binding Date , StringFormat= dd.MM.yy }"></TextBlock>
                                     </StackPanel>
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="2" Grid.RowSpan="3" VerticalAlignment="Center" Orientation="Horizontal">
-                                    <TextBlock Margin="5">Количество:</TextBlock>
-                                    <TextBlock x:Name="TbCount"  Text="{Binding Count}"  Width="20">
+                                    <TextBlock   Margin="5">Количество:</TextBlock>
+                                    <TextBlock  Margin="0 5 5 5" x:Name="TbCount"  Text="{Binding Count}"  Width="20">
                                     </TextBlock>
                                     <StackPanel>
                                       

@@ -50,6 +50,7 @@ namespace YP22.MyPages
             ordersBool = false;
             countryBool = false;
             MyFrame.Navigate(new YP22.MyPages.AdminPages.AdminProductPage());
+            Add.Visibility = Visibility.Visible;
             
         }
 
@@ -59,6 +60,8 @@ namespace YP22.MyPages
             userBoll = false;
             countryBool = false;
             ordersBool = true;
+            MyFrame.Navigate(new MyPages.AdminPages.AdminAllOrderPage());
+            Add.Visibility = Visibility.Hidden;
         }
 
         private void BtnCountry_Click(object sender, RoutedEventArgs e)
@@ -69,6 +72,8 @@ namespace YP22.MyPages
         
             countryBool = true;
             MyFrame.Navigate(new MyPages.AdminPages.AdminCountryPage());
+            Add.Visibility = Visibility.Visible;
+
         }
 
         private void BtnUser_Click(object sender, RoutedEventArgs e)
@@ -78,6 +83,8 @@ namespace YP22.MyPages
             ordersBool = false;
             countryBool = false;
             userBoll = true;
+            Add.Visibility = Visibility.Visible;
+
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -90,6 +97,7 @@ namespace YP22.MyPages
             else if (ordersBool == true)
             {
                 ordersBool = false;
+               
             }
             else if (countryBool == true)
             {
@@ -100,6 +108,23 @@ namespace YP22.MyPages
             {
                 userBoll = false;
             }
+        }
+
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Вы точно хотите выйти из аккаунта?", "Уведомление", MessageBoxButton.YesNo) ==
+             MessageBoxResult.Yes)
+            {
+                MainWindow mainWindow = new MainWindow();
+                YP22.Classes.AuthUser.user = null;
+                YP22.Classes.AuthUser.order = null;
+              
+                mainWindow.Show();
+                MyWindow.MainWindow2.Window2.Close();
+                
+            }
+            else
+                MessageBox.Show("Вы отменили выход");
         }
     }
 }

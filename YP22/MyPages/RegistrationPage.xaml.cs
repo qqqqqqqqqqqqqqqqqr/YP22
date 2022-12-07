@@ -48,10 +48,7 @@ namespace YP22.MyPages
                 NavigationService.Navigate(new YP22.MyPages.AuthPage());
 
             }
-            else
-            {
-                MessageBox.Show("Не пытайся обмануть. Нужно заполнить все обязательные поля (*)");
-            }
+          
         }
 
         private void BtnAuth_Click(object sender, RoutedEventArgs e)
@@ -81,8 +78,12 @@ namespace YP22.MyPages
 
             if (password.Length > 6)
             {
-                foreach(char a in password)
+                 b1 = false;
+                 b2 = false;
+                 b3 = false;
+                foreach (char a in password)
                 {
+
                     if(a.ToString() == a.ToString().ToUpper())
                     {
                         b1 = true;
@@ -106,15 +107,29 @@ namespace YP22.MyPages
                 else
                 {
                     TbPassword.ToolTip = toolTip;
+                    Im2.Visibility = Visibility.Hidden;
+                    save1 = false;
+
                     BtnReg.IsEnabled = false;
                 }
             }
             else
             {
+                Im2.Visibility = Visibility.Hidden;
+
                 TbPassword.ToolTip = toolTip;
+                save1 = false;
                 BtnReg.IsEnabled = false;
             }
 
+            if (TbPassword.Text.Length < 1)
+            {
+                TbPassword.ToolTip = toolTip;
+                Im2.Visibility = Visibility.Hidden;
+                save1 = false;
+
+                BtnReg.IsEnabled = false;
+            }
             Up();
 
         }
@@ -129,14 +144,28 @@ namespace YP22.MyPages
          
             toolTip.Content = toolTipPanel;
            User UserInDB = ConnectClass.db.User.Where(x => x.LogIn.ToString() == TbLogin.Text.ToString()).FirstOrDefault();
+            
             if (UserInDB == null)
             {
                 save2 = true;
                 Im1.Visibility = Visibility.Visible;
             }
             else
+               
             {
                 TbLogin.ToolTip = toolTip;
+                Im1.Visibility = Visibility.Hidden;
+                save2 = false;
+
+
+            }
+
+            if (TbLogin.Text.Length < 1)
+            {
+                TbLogin.ToolTip = toolTip;
+                Im1.Visibility = Visibility.Hidden;
+                save2 = false;
+
             }
 
             Up();
@@ -145,10 +174,32 @@ namespace YP22.MyPages
 
         private void Up()
         {
-            if (save1 == true && save2 == true)
+            if (save1 == true && save2 == true && TbName.Text.Length>0 && TbFirstname.Text.Length > 0)
             {
                 BtnReg.IsEnabled = true;
             }
+            else
+            {
+                BtnReg.IsEnabled = false;
+            }
+        }
+
+        private void TbName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+            Up();
+        }
+
+        private void TbFirstname_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+            Up();
+        }
+
+        private void TbLastname_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+            Up();
         }
     }
 }

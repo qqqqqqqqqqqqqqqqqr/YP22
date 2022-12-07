@@ -14,15 +14,15 @@
 
             <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock> Имя * </TextBlock>
-                <TextBox x:Name="TbName" Width="200"></TextBox>
+                <TextBox TextChanged="TbName_TextChanged" x:Name="TbName" Width="200"></TextBox>
             </StackPanel>
             <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock> Фамилия *</TextBlock>
-                <TextBox x:Name="TbFirstname" Width="200"></TextBox>
+                <TextBox TextChanged="TbFirstname_TextChanged" x:Name="TbFirstname" Width="200"></TextBox>
             </StackPanel>
             <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock> Отчество</TextBlock>
-                <TextBox x:Name="TbLastname" Width="200"></TextBox>
+                <TextBox TextChanged="TbLastname_TextChanged" x:Name="TbLastname" Width="200"></TextBox>
             </StackPanel>
 
             <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">

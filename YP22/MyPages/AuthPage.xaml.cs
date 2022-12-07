@@ -29,6 +29,14 @@ namespace YP22.MyPages
         public AuthPage()
         {
             InitializeComponent();
+            if (Properties.Settings.Default.Login != null)
+            {
+                TbLogin.Text = Properties.Settings.Default.Login;
+            }
+            if (Properties.Settings.Default.Password != null)
+            {
+                TbPassword.Text = Properties.Settings.Default.Password;
+            }
 
         }
 
@@ -78,6 +86,19 @@ namespace YP22.MyPages
 
                     window2.Show();
                     MainWindow.window.Close();
+
+                    if (CbSaveMe.IsChecked == true)
+                    {
+                        Properties.Settings.Default.Login = TbLogin.Text;
+                        Properties.Settings.Default.Password = TbPassword.Text;
+                        Properties.Settings.Default.Save();
+                    }
+                    else
+                    {
+                        Properties.Settings.Default.Login = null;
+                        Properties.Settings.Default.Password = null;
+                        Properties.Settings.Default.Save();
+                    }
 
                 }
             }

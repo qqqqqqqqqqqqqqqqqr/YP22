@@ -23,6 +23,9 @@ namespace YP22.DBConnect
             }
         }
 
+        
+
+
         public Visibility visibleBtn
         {
             get
@@ -47,6 +50,19 @@ namespace YP22.DBConnect
                 }
                 else
                     return 0;
+            }
+        }
+
+        public string ImageProduct
+        {
+            
+            get
+            {
+               
+                if (Image == null)
+                    return "C:\\Users\\MSSI\\source\\repos\\YP22\\YP22\\Resourse\\заглушка.jpg";
+                else
+                    return Image;
             }
         }
 

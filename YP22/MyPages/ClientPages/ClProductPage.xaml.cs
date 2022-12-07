@@ -194,6 +194,13 @@ namespace YP22.MyPages.ClientPages
 
             }
 
+            if(ChecedMonth!= null && ChecedMonth.IsChecked == true)
+            {
+                DateTime date = DateTime.Now;
+
+                products = products.Where(x => x.Date >= new DateTime(date.Year, date.Month, 1) && x.Date <= new DateTime(date.Year, date.Month, 31)).ToList();
+            }
+
             if (ListProduct!= null)
             {
                 ListProduct.ItemsSource = products;
@@ -257,6 +264,15 @@ namespace YP22.MyPages.ClientPages
           
          
 
+        }
+
+      
+
+   
+
+        private void ChecedMonth_Click(object sender, RoutedEventArgs e)
+        {
+            Up();
         }
     }
 }
