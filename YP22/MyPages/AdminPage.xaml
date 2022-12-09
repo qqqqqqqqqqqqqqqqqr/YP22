@@ -20,11 +20,12 @@
                 <ColumnDefinition Width="139*"/>
                 <ColumnDefinition Width="861*"/>
             </Grid.ColumnDefinitions>
+          
             <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Background="WhiteSmoke"></StackPanel>
             <StackPanel Grid.RowSpan="4" Grid.Column="0" Background="WhiteSmoke"></StackPanel>
             <StackPanel Grid.Row="3" Grid.Column="1">
                 <StackPanel Orientation="Horizontal">
-                    <Button Margin="5"  x:Name="Add" Click="Add_Click">Добавить</Button>
+                    <Button Margin="5"  x:Name="Add" Click="Add_Click">Добавить новый</Button>
                 </StackPanel>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.Column="1">
@@ -39,7 +40,9 @@
                 </Button>
                 <!--<Button x:Name="BtnUser" Click="BtnUser_Click">Пользователи</Button>-->
             </StackPanel>
-
+            <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="0"  Width="70">
+                <Image Source="C:\Users\MSSI\source\repos\YP22\YP22\Resourse\logo.png"></Image>
+            </StackPanel>
             <Frame x:Name="MyFrame" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"></Frame>
         </Grid>
     </Grid>

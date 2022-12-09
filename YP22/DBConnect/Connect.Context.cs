@@ -30,7 +30,6 @@ namespace YP22.DBConnect
         public virtual DbSet<ExecutionStage> ExecutionStage { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderProduct> OrderProduct { get; set; }
-        public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<Purchase> Purchase { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<SupplierProduct> SupplierProduct { get; set; }
@@ -38,5 +37,6 @@ namespace YP22.DBConnect
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Unit> Unit { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Product> Product { get; set; }
     }
 }

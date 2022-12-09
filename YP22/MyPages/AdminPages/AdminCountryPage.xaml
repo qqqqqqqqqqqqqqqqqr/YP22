@@ -24,7 +24,7 @@
 
                         <StackPanel Grid.Row="0" Orientation="Horizontal">
                             <TextBlock Margin="10"> Страна-поставщик:</TextBlock>
-                            <TextBlock  Margin="10" Text="{Binding Name}"></TextBlock>
+                            <TextBlock  Margin="10" Text="{Binding Name}" Foreground="{Binding Color}"></TextBlock>
                         </StackPanel>
                         <StackPanel Grid.Row="1" Orientation="Horizontal">
                             <Button x:Name="BtnEdit" Click="BtnEdit_Click" Margin="10"> Редактировать</Button>

@@ -29,9 +29,9 @@ namespace YP22.DBConnect
         public Nullable<decimal> PriceSumm { get; set; }
     
         public virtual ExecutionStage ExecutionStage { get; set; }
+        public virtual User User { get; set; }
         public virtual User User1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderProduct> OrderProduct { get; set; }
-        public virtual User User { get; set; }
     }
 }

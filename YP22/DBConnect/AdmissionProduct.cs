@@ -23,6 +23,9 @@ namespace YP22.DBConnect
         public int id { get; set; }
         public Nullable<int> AcceptanceStatus { get; set; }
         public Nullable<int> SupId { get; set; }
+        public Nullable<decimal> SummPrice { get; set; }
+        public Nullable<int> Count { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
     
         public virtual AcceptanceStatus AcceptanceStatus1 { get; set; }
         public virtual SupplierСountry SupplierСountry { get; set; }

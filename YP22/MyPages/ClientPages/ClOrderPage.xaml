@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <StackPanel>
             <StackPanel Grid.Row="0">
-                <ListView  x:Name="ListProduct" d:ItemsSource="{d:SampleData}" Grid.RowSpan="2" Height="600">
+                <ListView  x:Name="ListProduct" d:ItemsSource="{d:SampleData}" Grid.RowSpan="2" Height="500">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid Width="750">
@@ -31,7 +31,7 @@
                                 </Grid.RowDefinitions>
                                 <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="3">
                                     <Border BorderBrush="#A9808080" BorderThickness="3">
-                                        <Image Source="{ Binding ImageProduct }" Width="50" Height="50"></Image>
+                                        <Image Source="{ Binding Product.Image }" Width="50" Height="50"></Image>
                                     </Border>
                                 </StackPanel>
                                 <StackPanel Grid.Row="0" Grid.Column="1">

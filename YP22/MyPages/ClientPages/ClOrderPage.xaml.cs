@@ -83,6 +83,7 @@ namespace YP22.MyPages.ClientPages
                     DBConnect.ConnectClass.db.SaveChanges();
                 }
                 while ((DBConnect.ConnectClass.db.OrderProduct.Where(x => x.OrderId == AuthUser.order.id).FirstOrDefault()) != null);
+                ItemSourceList();
             }
             else
                 MessageBox.Show("Вы отменили очистку корзины");
@@ -111,7 +112,8 @@ namespace YP22.MyPages.ClientPages
                 DBConnect.ConnectClass.db.SaveChanges();
                 AuthUser.order = null;
                 ItemSourceList();
-
+                TxtCountProduct.Text = "0";
+                TxtSumm.Text = "0";
 
 
                 MessageBox.Show("Заказ принят!");
@@ -119,7 +121,7 @@ namespace YP22.MyPages.ClientPages
             else
                 MessageBox.Show("Вы отменили оформление заказа");
 
-          
+            
         }
     }
 }

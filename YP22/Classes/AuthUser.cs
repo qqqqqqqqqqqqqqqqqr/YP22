@@ -15,5 +15,6 @@ namespace YP22.Classes
 
         public static Visibility Visibility = Visibility.Visible;
         public static Order order;
+        public static AdmissionProduct AdmissionProduct;
     }
 }

@@ -25,6 +25,7 @@ namespace YP22.MyPages.ManagerPages
         {
             InitializeComponent();
             Up();
+            
 
 
         }
@@ -40,7 +41,7 @@ namespace YP22.MyPages.ManagerPages
             }
             else if (RB3.IsChecked == true)
             {
-                orders = orders.Where(x => x.Executor == null).ToList();
+                orders = orders.Where(x => x.Executor == null && x.ExecutionStageId != 10).ToList();
             }
             ListMyOrders.ItemsSource = orders;
         }
@@ -74,6 +75,68 @@ namespace YP22.MyPages.ManagerPages
         private void RB1_Click(object sender, RoutedEventArgs e)
         {
             Up();
+        }
+
+        private void BtnState1_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Отклонить заказ?", "Уведомление", MessageBoxButton.YesNo) ==
+           MessageBoxResult.Yes)
+            {
+                Order sel = (sender as Button).DataContext as Order;
+                sel.ExecutionStageId = 3;
+                DBConnect.ConnectClass.db.SaveChanges();
+                Up();
+            }
+
+           
+        }
+
+        private void BtnState2_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Направить заказ к оплате?", "Уведомление", MessageBoxButton.YesNo) ==
+          MessageBoxResult.Yes)
+            {
+                Order sel = (sender as Button).DataContext as Order;
+                sel.ExecutionStageId = 4;
+                DBConnect.ConnectClass.db.SaveChanges();
+                Up();
+            }
+        }
+
+        private void BtnState3_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Направить на выполнение?", "Уведомление", MessageBoxButton.YesNo) ==
+           MessageBoxResult.Yes)
+            {
+                Order sel = (sender as Button).DataContext as Order;
+                sel.ExecutionStageId = 6;
+                DBConnect.ConnectClass.db.SaveChanges();
+                Up();
+            }
+        }
+
+        //private void BtnState4_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (MessageBox.Show("Отметить как оплаченный?", "Уведомление", MessageBoxButton.YesNo) ==
+        //   MessageBoxResult.Yes)
+        //    {
+        //        Order sel = (sender as Button).DataContext as Order;
+        //        sel.ExecutionStageId = 5;
+        //        DBConnect.ConnectClass.db.SaveChanges();
+        //        Up();
+        //    }
+        //}
+
+        private void BtnState5_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Отметить как готовый?", "Уведомление", MessageBoxButton.YesNo) ==
+           MessageBoxResult.Yes)
+            {
+                Order sel = (sender as Button).DataContext as Order;
+                sel.ExecutionStageId = 7;
+                DBConnect.ConnectClass.db.SaveChanges();
+                Up();
+            }
         }
     }
 }

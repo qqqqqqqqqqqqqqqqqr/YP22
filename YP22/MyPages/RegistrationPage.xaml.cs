@@ -44,6 +44,7 @@ namespace YP22.MyPages
                 newUser.RoleId = 1;
 
                 DBConnect.ConnectClass.db.User.Add(newUser);
+                DBConnect.ConnectClass.db.SaveChanges();
                 MessageBox.Show("Регистрация выполнена успешно");
                 NavigationService.Navigate(new YP22.MyPages.AuthPage());
 

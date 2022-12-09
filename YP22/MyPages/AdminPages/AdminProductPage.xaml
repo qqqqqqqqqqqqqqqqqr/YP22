@@ -17,7 +17,7 @@
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <StackPanel Orientation="Horizontal">
                 <TextBlock>Ед. изм</TextBlock>
-                <ComboBox Height="20" SelectionChanged="CbUnit_SelectionChanged" x:Name="CbUnit" Width="100">
+                <ComboBox SelectedIndex="0" Height="20" SelectionChanged="CbUnit_SelectionChanged" x:Name="CbUnit" Width="70">
                     <ComboBoxItem>Все</ComboBoxItem>
                     <ComboBoxItem>Без ед.изм.</ComboBoxItem>
                     <ComboBoxItem>кг.</ComboBoxItem>
@@ -28,7 +28,7 @@
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock>Сортировать:</TextBlock>
-                <ComboBox  Height="20" Width="250"  Margin="5 0 0 0" SelectionChanged="CbSort_SelectionChanged"  x:Name="CbSort">
+                <ComboBox SelectedIndex="0"  Height="20" Width="180"  Margin="5 0 0 0" SelectionChanged="CbSort_SelectionChanged"  x:Name="CbSort">
                     <ComboBoxItem>Без сортировки</ComboBoxItem>
                     <ComboBoxItem>Наименование</ComboBoxItem>
                     <ComboBoxItem>Дата добавления</ComboBoxItem>
@@ -36,7 +36,7 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBox  Height="20"  x:Name="TbSearch" TextChanged="TbSearch_TextChanged" Width="250"></TextBox>
+                <TextBox  Height="20"  x:Name="TbSearch" TextChanged="TbSearch_TextChanged" Width="200"></TextBox>
                 <Image Source="C:\Users\MSSI\source\repos\YP22\YP22\Resourse\лупа1.png" Height="15" Margin="5 0 0 0"></Image>
             </StackPanel>
 
@@ -72,14 +72,14 @@
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="3">
                                 <Border BorderBrush="#FFCDDEDE" BorderThickness="3">
-                                    <Image Width="50" Height="50" Source="{ Binding ImageProduct }"></Image>
+                                    <Image Width="50" Height="50" Source="{ Binding Image }"></Image>
                                 </Border>
                             </StackPanel>
                         <StackPanel Grid.Row="0" Grid.Column="1">
-                            <TextBlock Text="{Binding Name}"></TextBlock>
+                            <TextBlock Text="{Binding Name}" ></TextBlock>
                         </StackPanel>
                         <StackPanel Width="500" Grid.Row="1" Grid.Column="1">
-                            <TextBlock Text="{Binding Description}"></TextBlock>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding Description}"></TextBlock>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock>Стоимость:</TextBlock>
                                 <TextBlock Text="{Binding Price}"></TextBlock>

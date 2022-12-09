@@ -53,18 +53,7 @@ namespace YP22.DBConnect
             }
         }
 
-        public string ImageProduct
-        {
-            
-            get
-            {
-               
-                if (Image == null)
-                    return "C:\\Users\\MSSI\\source\\repos\\YP22\\YP22\\Resourse\\заглушка.jpg";
-                else
-                    return Image;
-            }
-        }
+        
 
     }
 }

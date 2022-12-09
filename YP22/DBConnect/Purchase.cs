@@ -15,12 +15,12 @@ namespace YP22.DBConnect
     public partial class Purchase
     {
         public int id { get; set; }
-        public Nullable<int> SupProductId { get; set; }
+        public Nullable<int> ProductId { get; set; }
         public Nullable<int> Count { get; set; }
         public Nullable<decimal> Price { get; set; }
         public Nullable<int> AdmissionProductId { get; set; }
     
         public virtual AdmissionProduct AdmissionProduct { get; set; }
-        public virtual SupplierProduct SupplierProduct { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

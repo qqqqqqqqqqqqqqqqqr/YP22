@@ -28,7 +28,7 @@ namespace YP22.MyPages.ClientPages
         }
         private void ItemSourse()
         {
-            ListMyOrders.ItemsSource = DBConnect.ConnectClass.db.Order.Where(x => x.Customer == Classes.AuthUser.user.id).ToList();
+            ListMyOrders.ItemsSource = DBConnect.ConnectClass.db.Order.Where(x => x.Customer == Classes.AuthUser.user.id && x.ExecutionStageId != null).ToList();
             
         }
 
@@ -55,6 +55,19 @@ namespace YP22.MyPages.ClientPages
             {
                 Order sel = (sender as Button).DataContext as Order;
              
+            }
+        }
+
+        private void BtnState4_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (MessageBox.Show("Оплатить?", "Уведомление", MessageBoxButton.YesNo) ==
+           MessageBoxResult.Yes)
+            {
+                Order sel = (sender as Button).DataContext as Order;
+                sel.ExecutionStageId = 5;
+                DBConnect.ConnectClass.db.SaveChanges();
+                ItemSourse();
             }
         }
     }

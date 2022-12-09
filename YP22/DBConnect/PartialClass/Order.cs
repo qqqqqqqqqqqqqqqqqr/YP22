@@ -17,7 +17,7 @@ namespace YP22.DBConnect
                 if (Executor == null)
                     return "Исполнитель не назначен.Ожидайте";
                 else
-                    return User1.Name;
+                    return (User1.Firstname + "  "+ User1.Name + "  " + User1.LastName);
             }
         }
 
@@ -29,6 +29,78 @@ namespace YP22.DBConnect
                     return Visibility.Visible;
                 else
                     return Visibility.Hidden;
+            }
+        }
+
+        public Visibility VisibilityBtnS1
+        {
+            get
+            {
+                if (ExecutionStageId == 1 || ExecutionStageId == 2)
+                {
+
+                    return Visibility.Visible;
+                }
+                else
+                    return Visibility.Collapsed;
+            }
+        }
+
+        public Visibility VisibilityBtnS2
+        {
+            get
+            {
+                if (ExecutionStageId == 2 )
+                {
+
+                    return Visibility.Visible;
+                }
+                else
+                    return Visibility.Collapsed;
+            }
+        }
+
+        
+
+        public Visibility VisibilityBtnS3
+        {
+            get
+            {
+                if (ExecutionStageId == 4)
+                {
+
+                    return Visibility.Visible;
+                }
+                else
+                    return Visibility.Collapsed;
+            }
+        }
+
+        public Visibility VisibilityBtnS4
+        {
+            get
+            {
+                if (ExecutionStageId == 5)
+                {
+
+                    return Visibility.Visible;
+                }
+                else
+                    return Visibility.Collapsed;
+            }
+        }
+
+        public Visibility VisibilityBtnS5
+        {
+            get
+            {
+                if (ExecutionStageId == 6)
+                {
+
+                    return Visibility.Visible;
+                }
+                else
+                    return Visibility.Collapsed;
             }
         }
 

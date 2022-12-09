@@ -274,5 +274,10 @@ namespace YP22.MyPages.ClientPages
         {
             Up();
         }
+
+        private void ListProduct_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

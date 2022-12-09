@@ -38,6 +38,10 @@ namespace YP22.MyWindow
             {
                 MyFrame.Navigate(new ManagerPage());
             }
+            else if(AuthUser.user.RoleId == 4)
+            {
+                MyFrame.Navigate(new MyPages.StorekeeperPage());
+            }
         }
     }
 }

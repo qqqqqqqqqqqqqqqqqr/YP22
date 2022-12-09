@@ -18,12 +18,13 @@ namespace YP22.DBConnect
         public Product()
         {
             this.OrderProduct = new HashSet<OrderProduct>();
+            this.Purchase = new HashSet<Purchase>();
             this.SupplierProduct = new HashSet<SupplierProduct>();
         }
     
         public int id { get; set; }
         public string Name { get; set; }
-        public string Image { get; set; }
+        public byte[] Image { get; set; }
         public Nullable<decimal> Price { get; set; }
         public string Description { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
@@ -34,6 +35,8 @@ namespace YP22.DBConnect
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderProduct> OrderProduct { get; set; }
         public virtual Unit Unit { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Purchase> Purchase { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SupplierProduct> SupplierProduct { get; set; }
     }

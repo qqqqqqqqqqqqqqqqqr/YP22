@@ -19,9 +19,12 @@
             <Setter Property="Background" Value="#FFD8E6E6"></Setter>
         </Style>
         <Style TargetType="ListView">
-            <Setter Property="Background" Value="#FFE8EEED"></Setter>
+            <Setter Property="Background" Value="#FFE8EEED" ></Setter>
         </Style>
-        
+
+        <Style TargetType="TextBlock" x:Key="Tb1">
+            <Setter Property="Foreground"  Value="{Binding SupplierСountry.Color}"></Setter>
+        </Style>
          
     </Application.Resources>
 </Application>

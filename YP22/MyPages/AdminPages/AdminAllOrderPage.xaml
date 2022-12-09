@@ -12,7 +12,7 @@
         <ListView x:Name="ListMyOrders" d:ItemsSource="{d:SampleData}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Width="750">
+                    <Grid Width="1050" Margin="5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
@@ -28,9 +28,8 @@
                             <!--Менеджер-->
                         </Grid.RowDefinitions>
 
-                        <StackPanel Grid.Column="1" Grid.RowSpan="4">
+                        <StackPanel Grid.Column="1" Grid.RowSpan="4" VerticalAlignment="Center">
                             <Button x:Name="BtnExt" Click="BtnExt_Click"  Width="200" Visibility="{Binding VisibilityBtnExt}" >Отклонить заказ</Button>
-                         
                         </StackPanel>
 
                         <StackPanel  Grid.Row="0" Orientation="Horizontal">
@@ -56,7 +55,7 @@
                                     <TextBlock>руб.:</TextBlock>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <ListView BorderBrush="White" BorderThickness="0"    ItemsSource="{Binding OrderProduct}"  IsSynchronizedWithCurrentItem="False">
+                                    <ListView  Width="500" BorderBrush="White" BorderThickness="0"    ItemsSource="{Binding OrderProduct}"  >
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
@@ -88,7 +87,9 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Margin="0,0,10,0">Заказчик:</TextBlock>
-                                <TextBlock   Text="{Binding User.Name}"></TextBlock>
+                                <TextBlock Margin="0,0,5,0"  Text="{Binding User.Firstname}"></TextBlock>
+                                <TextBlock   Margin="0,0,5,0" Text="{Binding User.Name}"></TextBlock>
+                                <TextBlock   Text="{Binding User.LastName}"></TextBlock>
                             </StackPanel>
                         </StackPanel>
                      

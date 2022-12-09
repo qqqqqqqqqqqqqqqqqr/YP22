@@ -14,19 +14,11 @@ namespace YP22.DBConnect
     
     public partial class SupplierProduct
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SupplierProduct()
-        {
-            this.Purchase = new HashSet<Purchase>();
-        }
-    
         public int id { get; set; }
         public Nullable<int> ProductId { get; set; }
         public Nullable<int> SupplierId { get; set; }
     
-        public virtual Product Product { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Purchase> Purchase { get; set; }
         public virtual SupplierСountry SupplierСountry { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

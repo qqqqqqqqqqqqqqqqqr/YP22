@@ -30,6 +30,9 @@
         <StackPanel Grid.Row="0" Grid.Column="2">
             <Button Margin="5" x:Name="BtnExit" Width="150" HorizontalAlignment="Right" Click="BtnExit_Click">Выйти из аккаунта</Button>
         </StackPanel>
+        <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="0"  Width="70">
+            <Image Source="C:\Users\MSSI\source\repos\YP22\YP22\Resourse\logo.png"></Image>
+        </StackPanel>
         <Frame  Grid.Column="1" x:Name="MyFrames" Grid.Row="1" Grid.RowSpan="2" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>

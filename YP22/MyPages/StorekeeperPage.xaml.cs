@@ -24,5 +24,40 @@ namespace YP22.MyPages
         {
             InitializeComponent();
         }
+
+        private void BtnProduct_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.Navigate(new MyPages.StorekeeperPages.StProduct());
+        }
+
+        private void BtnNewProduct_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.Navigate(new MyPages.StorekeeperPages.NewProductPage());
+
+        }
+
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Вы точно хотите выйти из аккаунта?", "Уведомление", MessageBoxButton.YesNo) ==
+           MessageBoxResult.Yes)
+            {
+                MainWindow mainWindow = new MainWindow();
+                YP22.Classes.AuthUser.user = null;
+                YP22.Classes.AuthUser.order = null;
+
+                mainWindow.Show();
+                MyWindow.MainWindow2.Window2.Close();
+
+            }
+            else
+                MessageBox.Show("Вы отменили выход");
+        }
+
+  
+
+        private void BtnAllAdmiss_Click(object sender, RoutedEventArgs e)
+        {
+            MyFrame.Navigate(new MyPages.StorekeeperPages.AllAdmissPage());
+        }
     }
 }

@@ -12,7 +12,7 @@
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Margin="5">Наименование:</TextBlock>
-                <TextBox TextChanged="TbName_TextChanged" Margin="5" x:Name="TbName" Width="250"></TextBox>
+                <TextBox TextChanged="TbName_TextChanged" Margin="5" Text="{Binding Name}" Foreground="{Binding Color}" x:Name="TbName" Width="250"></TextBox>
             </StackPanel>
             <Button x:Name="BtnSave" Click="BtnSave_Click" Margin="5" Width="150">Сохранить</Button>
             <Button x:Name="BtnNext" Click="BtnNext_Click" Margin="5" Width="150">Отменить</Button>

@@ -26,7 +26,8 @@
 
                         <StackPanel Grid.Column="1" Grid.RowSpan="4" VerticalAlignment="Center" >
                             <Button  x:Name="BtnExt" Click="BtnExt_Click" Width="200" Visibility="{Binding VisibilityBtnExt}" >Отменить заказ</Button>
-                          
+                            <Button Margin="10" Name="BtnState4" Click="BtnState4_Click"  Width="200" Visibility="{Binding VisibilityBtnS3}">Оплатить</Button>
+
                         </StackPanel>
                         
                         <StackPanel Margin="0 0 0 5"  Grid.Row="0" Orientation="Horizontal">
@@ -52,7 +53,7 @@
                                     <TextBlock>руб.:</TextBlock>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <ListView BorderBrush="White" BorderThickness="0"    ItemsSource="{Binding OrderProduct}"  IsSynchronizedWithCurrentItem="False">
+                                    <ListView Width="500" BorderBrush="White" BorderThickness="0"    ItemsSource="{Binding OrderProduct}"  IsSynchronizedWithCurrentItem="False">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
@@ -80,7 +81,8 @@
 
                         <StackPanel Grid.Row="3" Orientation="Horizontal">
                             <TextBlock Margin="0,0,10,5">Менеджер-исполнитель заказа:</TextBlock>
-                            <TextBlock   Text="{Binding ExecutorPC}"></TextBlock>
+                            <TextBlock   Text="{Binding ExecutorPC}" Margin="0,0,5,0"></TextBlock>
+                            
                         </StackPanel>
                        
                     </Grid>

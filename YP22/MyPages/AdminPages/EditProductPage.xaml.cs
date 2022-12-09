@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,17 +27,36 @@ namespace YP22.MyPages.AdminPages
         public EditProductPage(Product product)
         {
             InitializeComponent();
-            
+
             Update();
             Product = product;
             DataContext = Product;
+            CbCountry.ItemsSource = DBConnect.ConnectClass.db.SupplierСountry.ToList();
             
 
-           
+
+
+            CbCountry.DisplayMemberPath = "Name";
         }
+
+       
 
         private void Update()
         {
+           if(Product != null)
+            {
+                List<SupplierProduct> supplierProducts = DBConnect.ConnectClass.db.SupplierProduct.Where(x => x.ProductId == Product.id).ToList();
+                List<SupplierСountry> supplierСountries = new List<SupplierСountry>();
+                SupplierСountry supplier;
+                for (int i = 0; i < supplierProducts.Count; i++)
+                {
+                    supplier = supplierProducts[i].SupplierСountry;
+                    supplierСountries.Add(supplier);
+                }
+                LvCountry.ItemsSource = supplierСountries.ToList();
+            }
+           
+
             if (TbName.Text.Length < 1 || TbPrice.Text.Length < 1 || TbDescription.Text.Length < 1 || TbCount.Text.Length < 1)
             {
                 ToolTip toolTip = new ToolTip();
@@ -94,6 +115,25 @@ namespace YP22.MyPages.AdminPages
                 }
                 DBConnect.ConnectClass.db.Product.Add(Product);
             }
+            else
+            {
+                if (CbUnit.SelectedIndex == 0)
+                {
+                    Product.UnitID = 4;
+                }
+                else if (CbUnit.SelectedIndex == 1)
+                {
+                    Product.UnitID = 1;
+                }
+                else if (CbUnit.SelectedIndex == 2)
+                {
+                    Product.UnitID = 2;
+                }
+                else if (CbUnit.SelectedIndex == 3)
+                {
+                    Product.UnitID = 3;
+                }
+            }
             DBConnect.ConnectClass.db.SaveChanges();
             MessageBox.Show("Выполнено!");
             NavigationService.Navigate(new MyPages.AdminPages.AdminProductPage());
@@ -135,6 +175,83 @@ namespace YP22.MyPages.AdminPages
            
 
             
+        }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            var sel = (sender as Button).DataContext as SupplierСountry;
+            if(sel != null)
+            {
+                if (MessageBox.Show("Вы точно хотите удалить этого поставщика?", "Уведомление", MessageBoxButton.YesNo) ==
+         MessageBoxResult.Yes)
+                {
+                    SupplierProduct supplierProduct = DBConnect.ConnectClass.db.SupplierProduct.Where(x=> x.ProductId == Product.id && x.SupplierId == sel.id).FirstOrDefault();
+                    DBConnect.ConnectClass.db.SupplierProduct.Remove(supplierProduct);
+                    DBConnect.ConnectClass.db.SaveChanges();
+                    Update();
+                }
+             
+            }
+            else
+            {
+                MessageBox.Show("Ничего не выбрано");
+            }
+        
+
+        }
+
+        private void AddCountry_Click(object sender, RoutedEventArgs e)
+        {
+            if(CbCountry.SelectedIndex > -1)
+            {
+                if (MessageBox.Show("Вы точно хотите добавить этого поставщика?", "Уведомление", MessageBoxButton.YesNo) ==
+         MessageBoxResult.Yes)
+                {
+                    var sel = CbCountry.SelectedItem as SupplierСountry;
+                    SupplierProduct supplierProduct = new SupplierProduct();
+                    supplierProduct.SupplierId = sel.id;
+                    supplierProduct.ProductId = Product.id;
+                    DBConnect.ConnectClass.db.SupplierProduct.Add(supplierProduct);
+                    DBConnect.ConnectClass.db.SaveChanges();
+                    Update();
+                }
+
+              
+                
+            }
+            else
+            {
+                MessageBox.Show("Ничего не выбрано");
+            }
+        }
+
+        private void BtnAddImage_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog()
+            {
+                Filter = "*.png|*.png|*.jpeg|*.jpeg|*.jpg|*.jpg" /*сначала наименование в проводнике потом сам формат*/
+            };
+            //string name;
+  
+            if (openFile.ShowDialog().GetValueOrDefault())
+            {
+                Product.Image  = File.ReadAllBytes(openFile.FileName);
+                Images.Source = new BitmapImage(new Uri(openFile.FileName));
+
+                //name = openFile.FileName; /* записываем в бд выбранное изображение в байты*/
+                //FileInfo fileInf = new FileInfo(name);
+                //string path = "\\Resources\\" + fileInf.Name;
+                //FileInfo fileInfo2 = new FileInfo(path);
+                
+                //string path1 = "C:\\Users\\MSSI\\source\\repos\\YP22\\YP22\\Resourse\\";
+
+                //fileInf.CopyTo("C:\\Users\\MSSI\\source\\repos\\YP22\\YP22\\Resourse\\", true);
+              
+                //fileInf.CopyTo(path);
+                //Product.Image = fileInf.Name;
+                //DBConnect.ConnectClass.db.SaveChanges();
+                //Update();
+            }
         }
     }
 }

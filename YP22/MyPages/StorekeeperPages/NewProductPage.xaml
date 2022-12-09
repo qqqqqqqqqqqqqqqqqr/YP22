@@ -1,0 +1,97 @@
+﻿<Page x:Class="YP22.MyPages.StorekeeperPages.NewProductPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:YP22.MyPages.StorekeeperPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="NewProductPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="375*"/>
+            <RowDefinition Height="40*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <StackPanel Orientation="Horizontal">
+                <!--<TextBlock>Закупка товаров:</TextBlock>-->
+                <TextBlock x:Name="Number"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <!--<TextBlock>Поставщик: </TextBlock>
+                <ComboBox  x:Name="CbCountry" SelectionChanged="CbCountry_SelectionChanged"  Width="200">
+                    <ComboBoxItem Content="{Binding Name}"> </ComboBoxItem>
+                </ComboBox>-->
+
+            </StackPanel>
+            
+
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button x:Name="BtnClear" Click="BtnClear_Click" Height="30" Margin="40,0,40,0">Очистить закупку</Button>
+            <Button x:Name="BtnBuy" Click="BtnBuy_Click" Height="30">Оформить закупку</Button>
+        </StackPanel>
+        <ListView x:Name="ListProduct" d:ItemsSource="{d:SampleData}" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border  BorderThickness="{Binding borderTich}" BorderBrush="#A9808080" Padding="10" CornerRadius="5,5,5,5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5*"></ColumnDefinition>
+                                <ColumnDefinition Width="5*"></ColumnDefinition>
+                                <ColumnDefinition Width="5*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="3">
+                                <Border BorderBrush="#FFCDDEDE" BorderThickness="3">
+                                    <Image DataContext="{Binding Product}" Width="50" Height="50" Source="{ Binding Image }"></Image>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Grid.Row="0" Grid.Column="1">
+                                <TextBlock DataContext="{Binding Product}" Text="{Binding Name}"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Width="500" Grid.Row="1" Grid.Column="1">
+                                <TextBlock TextWrapping="Wrap" DataContext="{Binding Product}" Text="{Binding Description}"></TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Стоимость:</TextBlock>
+                                    <TextBlock DataContext="{Binding Product}" Text="{Binding Price}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>В наличии:</TextBlock>
+                                    <TextBlock DataContext="{Binding Product}" Text="{Binding Count}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Ед. изм.:</TextBlock>
+                                    <TextBlock DataContext="{Binding Product}" Text="{Binding Unit.Name}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Дата добавления товара:</TextBlock>
+                                    <TextBlock DataContext="{Binding Product}" Text="{Binding Date , StringFormat= dd.MM.yy }"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="2" Grid.RowSpan="3" VerticalAlignment="Center" >
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>  Закупочная цена:</TextBlock>
+                                    <TextBox x:Name="TbPrice1" Text="{Binding Price}" Width="60"></TextBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock>Количество:</TextBlock>
+                                    <TextBox x:Name="TbCount1" Text="{Binding Count}" Width="60"></TextBox>
+                                </StackPanel>
+
+                            </StackPanel>
+
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
